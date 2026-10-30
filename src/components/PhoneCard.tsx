@@ -1,0 +1,40 @@
+import { Play } from "lucide-react";
+
+export type Scene = {
+  title: string;
+  style: string;
+  gradient: string;
+  views: string;
+};
+
+export const scenes: Scene[] = [
+  { title: "What if the moon was a lamp?", style: "Pastel clay", gradient: "from-sky-400/70 via-indigo-600/60 to-slate-900", views: "2.4M" },
+  { title: "Day in the life of a Roman baker", style: "Documentary", gradient: "from-amber-300/60 via-orange-700/50 to-slate-950", views: "812K" },
+  { title: "Cities after humans left", style: "Cinematic", gradient: "from-emerald-300/60 via-teal-700/50 to-slate-950", views: "1.1M" },
+  { title: "5 facts about deep sea fish", style: "Anime", gradient: "from-fuchsia-400/60 via-purple-700/50 to-slate-950", views: "3.7M" },
+  { title: "The noir detective who hates rain", style: "Film noir", gradient: "from-slate-300/50 via-slate-600/50 to-black", views: "640K" },
+  { title: "Tiny chef cooks a giant pancake", style: "Claymation", gradient: "from-rose-300/60 via-red-600/50 to-slate-950", views: "5.2M" },
+];
+
+export function PhoneCard({ scene, className = "" }: { scene: Scene; className?: string }) {
+  return (
+    <div
+      className={`relative aspect-[9/16] w-40 shrink-0 overflow-hidden rounded-[1.4rem] border border-white/10 bg-gradient-to-b ${scene.gradient} shadow-2xl shadow-black/60 sm:w-48 ${className}`}
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.35),transparent_45%)]" />
+      <div className="absolute inset-x-0 top-0 flex items-center justify-between p-3 text-[10px] text-white/80">
+        <span className="rounded-full bg-black/30 px-2 py-0.5 backdrop-blur">{scene.style}</span>
+        <span>{scene.views} views</span>
+      </div>
+      <div className="absolute inset-0 grid place-items-center">
+        <span className="grid size-10 place-items-center rounded-full bg-white/15 backdrop-blur">
+          <Play className="ml-0.5 size-4 fill-white text-white" />
+        </span>
+      </div>
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-3 pt-10">
+        <p className="text-xs font-semibold leading-snug text-white">{scene.title}</p>
+        <p className="mt-1 text-[10px] text-white/60">EP 1 · 0:58</p>
+      </div>
+    </div>
+  );
+}

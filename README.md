@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Reelmint — waitlist landing page
 
-## Getting Started
+Phase-0 landing page for the AI short-form video platform (see
+[`docs/PRODUCT_DECISIONS.md`](docs/PRODUCT_DECISIONS.md) for the product plan).
+Collects emails into a Supabase `waitlist` table. Built with Next.js 16,
+TypeScript and Tailwind v4; deploys to Vercel.
 
-First, run the development server:
+## Local dev
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+cp .env.example .env.local   # fill in the Supabase values
+pnpm dev                     # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`pnpm build && pnpm start` runs the production build. `pnpm lint` runs ESLint.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## One-time setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Supabase (stores the emails)
 
-## Learn More
+1. Create a project at https://supabase.com/dashboard.
+2. Open **SQL Editor** and run [`supabase/migrations/0001_waitlist.sql`](supabase/migrations/0001_waitlist.sql).
+3. Go to **Project Settings -> API** and copy:
+   - Project URL -> `SUPABASE_URL`
+   - `service_role` secret key -> `SUPABASE_SERVICE_ROLE_KEY` (server-only, never prefix with `NEXT_PUBLIC_`).
 
-To learn more about Next.js, take a look at the following resources:
+View signups in **Table Editor -> waitlist**, or export with
+`select email from waitlist order by created_at;`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 2. Vercel (hosts the site)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Push this repo to GitHub and import it at https://vercel.com/new (framework: Next.js, defaults are fine).
+2. Add environment variables (Production + Preview):
+   - `SUPABASE_URL`
+   - `SUPABASE_SERVICE_ROLE_KEY`
+   - `NEXT_PUBLIC_SITE_URL` = your final URL (e.g. `https://reelmint.app`) — used for OG/canonical tags.
+3. Deploy. Attach your domain under **Settings -> Domains**.
 
-## Deploy on Vercel
+### 3. Instagram bio link
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Use `https://your-domain.com/?ref=ig` so signups are tagged with `source = ig`.
+Any `?ref=` (or `?utm_source=`) value is stored, so you can use `?ref=tt`,
+`?ref=yt`, etc. per platform.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Changing the brand
+
+Everything brand-related lives in [`src/config/site.ts`](src/config/site.ts)
+(name, tagline, hero copy, social links). Colors are CSS variables at the top
+of [`src/app/globals.css`](src/app/globals.css) (`--color-primary` is the neon
+blue). The favicon is `src/app/icon.svg`; the social share image is generated
+by `src/app/opengraph-image.tsx`.
+
+## How the waitlist works
+
+- `POST /api/waitlist` (`src/app/api/waitlist/route.ts`) validates the body with
+  zod, drops honeypot submissions, rate-limits by IP (5 / 10 min per instance),
+  and inserts into `waitlist` using the service-role key.
+- Duplicate emails return `{ status: "exists" }` and the UI shows a friendly
+  "already on the list" message.
+- Each row stores `email`, `platforms` (Instagram / TikTok / YouTube chips),
+  `source` (`?ref=`), `referrer`, `user_agent`, `created_at`, and a
+  `notified_at` column you can fill when you send the launch email.

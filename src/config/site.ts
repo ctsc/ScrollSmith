@@ -7,8 +7,8 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://scrollsmith.ai",
   social: {
     instagram: "https://www.instagram.com/cubestoriesdaily/",
-    tiktok: "https://tiktok.com/",
-    youtube: "https://youtube.com/",
+    tiktok: "https://www.tiktok.com/@cubestoriesdaily",
+    youtube: "https://www.youtube.com/@CubeStoriesDaily",
   },
   assistants: ["Claude", "ChatGPT", "Gemini", "Cursor"],
   launchCopy: {

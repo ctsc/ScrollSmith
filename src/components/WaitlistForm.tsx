@@ -21,6 +21,15 @@ export function WaitlistForm({ id, compact = false }: { id?: string; compact?: b
     if (expanded) inputRef.current?.focus();
   }, [expanded]);
 
+  useEffect(() => {
+    const onHash = () => {
+      if (window.location.hash === "#waitlist") setExpanded(true);
+    };
+    onHash();
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
+
   function toggle(p: Platform) {
     setSelected((s) => (s.includes(p) ? s.filter((x) => x !== p) : [...s, p]));
   }
@@ -68,14 +77,16 @@ export function WaitlistForm({ id, compact = false }: { id?: string; compact?: b
 
   return (
     <form id={id} onSubmit={onSubmit} className="w-full text-left" noValidate>
-      <button
-        type="button"
-        onClick={() => setExpanded(true)}
-        className={`group inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 font-semibold text-bg transition hover:bg-white sm:hidden ${expanded ? "hidden" : ""}`}
-      >
-        {site.launchCopy.cta}
-        <ArrowRight className="size-4 transition group-hover:translate-x-0.5" />
-      </button>
+      {!expanded ? (
+        <button
+          type="button"
+          onClick={() => setExpanded(true)}
+          className="group inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 font-semibold text-bg transition active:bg-white sm:hidden"
+        >
+          {site.launchCopy.cta}
+          <ArrowRight className="size-4" />
+        </button>
+      ) : null}
 
       <div className={`flex-col gap-2 sm:flex sm:flex-row ${expanded ? "flex animate-fade-up" : "hidden"}`}>
         <label className="sr-only" htmlFor={`${id ?? "wl"}-email`}>Email address</label>

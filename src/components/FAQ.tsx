@@ -3,11 +3,11 @@ import { site } from "@/config/site";
 const faqs = [
   {
     q: "What is an MCP?",
-    a: "A small add-on that gives an AI assistant new tools. Add Scrollsmith to Claude, ChatGPT or Cursor and it can make videos, images and voiceovers for you from a normal chat message.",
+    a: "A small add-on that gives an AI assistant new tools. Add Scrollsmith to Claude, ChatGPT or Gemini and it can make videos, images and voiceovers for you from a normal chat message.",
   },
   {
     q: "Is it free?",
-    a: "Yes, Scrollsmith is completely free. You just need an AI assistant that supports MCP, like Claude, ChatGPT or Cursor.",
+    a: "Yes, Scrollsmith is completely free. You just need an AI assistant that supports MCP, like Claude, ChatGPT or Gemini.",
   },
   {
     q: "Who is it for?",

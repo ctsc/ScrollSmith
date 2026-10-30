@@ -10,30 +10,35 @@ Last updated: 2026-10-30
 ## 0. THE PIVOT (2026-10-30) - read this first
 
 Scrollsmith is **not** a standalone AI app anymore. It is a **free MCP
-server** that creators add to the AI assistant they already pay for (Claude,
-ChatGPT, Cursor; Gemini if/when it supports MCP) so that assistant can make
-faceless short-form video, images and voiceovers for them.
+server that serves a curated library of skills** (Carter already has a
+GitHub repo of ~50 animation-style skills he uses with Claude to make his
+videos). Creators add Scrollsmith to the AI they already pay for - **Claude,
+ChatGPT, Google Gemini** - and that AI uses the skills plus *its own*
+models/code execution to make faceless short-form video, images and voice.
 
-What that removes: the in-app Video/Image/Voice pages, composer, library,
-credits, pricing tiers, Stripe, Creator Program, mobile app, and (for v2)
-auth/signup. What stays: the landing page (now the MCP page), the waitlist,
-the Video / Image / Voice framing (they become the three MCP tools), the
-dark neon-blue brand.
+**Scrollsmith never calls a video / image / voice model and never pays for
+generation.** The server only hands the assistant instructions, templates
+and helper tools. Hosting cost ~0.
 
-- **Price:** completely free. Users need their own Claude / ChatGPT / Cursor
-  subscription. OPEN: who pays for the actual video/image/voice model calls
-  (see V2_PLAN.md, question 1).
-- **Auth:** none in v2. v3 adds Google sign-in (username/password optional)
-  purely so we can count users and apply per-user quotas.
-- **Tracking in v2:** the MCP server logs every connection and tool call
-  (client name/version comes in the MCP `initialize` handshake), plus
-  "copy MCP link" clicks on the site. That is how we count adoption without
-  accounts.
-- **Website:** one site, landing = MCP page. Needs a unique visual identity -
-  Carter wants a **3D animated character/mascot** that lives on the page
-  and becomes the symbol people associate with Scrollsmith. Mobile must look
-  as good as desktop. Marquee gets real preview videos (Carter generates them
-  with a video model; Devin cannot generate video).
+What that removes: in-app Video/Image/Voice pages, composer, library,
+credits, pricing, Stripe, Creator Program, mobile app, provider adapters,
+job queues, and (for v2) auth/signup. What stays: the landing page (= MCP
+page), the waitlist, the Video / Image / Voice framing (now the three skill
+categories), the dark neon-blue brand.
+
+- **Price:** completely free, for everyone, forever-ish. Users need their own
+  Claude / ChatGPT / Gemini subscription.
+- **Clients:** Claude, ChatGPT, Gemini. Cursor is not a focus (it is a code
+  editor; creators don't live there). Which client can do voice / video is
+  client-specific (Gemini strong at voice; Claude good at code-rendered
+  animation) - the per-client install page should say what works where.
+- **Auth:** none in v2. v3 adds Google sign-in only so we can count users.
+- **Tracking in v2:** server logs every MCP connection (client name/version
+  from the `initialize` handshake) and every skill fetch; site logs
+  "copy MCP link" clicks.
+- **Website:** one site, landing = MCP page. Unique identity wanted: a **3D
+  animated mascot** that lives on the page. Mobile must look as good as
+  desktop. Marquee gets real preview videos (Carter makes them).
 - **Repo layout:** same repo, MCP server in its own folder (`apps/mcp`),
   website in `apps/web`.
 

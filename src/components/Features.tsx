@@ -29,13 +29,13 @@ export function Features() {
     <section id="features" className="relative scroll-mt-28 overflow-hidden py-24">
       <div className="pointer-events-none absolute right-[-10rem] top-20 h-[30rem] w-[30rem] rounded-full bg-primary-deep/20 blur-[120px]" />
       <div className="relative mx-auto max-w-6xl px-6">
-        <div className="max-w-2xl">
+        <div className="max-w-3xl">
           <p className="text-sm font-medium text-primary">One MCP &middot; Three tools</p>
-          <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-5xl">
+          <h2 className="mt-3 font-display text-[clamp(1.125rem,4.6vw,3rem)] font-semibold tracking-tight whitespace-nowrap">
             Give your AI the tools to make content
           </h2>
           <p className="mt-4 text-muted">
-            Add Scrollsmith to Claude, ChatGPT or Cursor once. From then on it can make video, images and voice for you, right in the chat you already use.
+            Add Scrollsmith to Claude, ChatGPT or Gemini once. From then on it can make video, images and voice for you, right in the chat you already use.
           </p>
         </div>
 

@@ -7,7 +7,7 @@ const agents = [
 ];
 
 const points = [
-  "No new app. Paste one link into Claude, ChatGPT or Cursor and you're set.",
+  "No new app. Paste one link into Claude, ChatGPT or Gemini and you're set.",
   "Just describe the video. Your AI picks the right tool and does the rest.",
   "Completely free. You only need the AI subscription you already have.",
 ];

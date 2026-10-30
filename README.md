@@ -22,7 +22,7 @@ pnpm dev                     # http://localhost:3000
 1. Create a project at https://supabase.com/dashboard.
 2. Open **SQL Editor** and run [`supabase/migrations/0001_waitlist.sql`](supabase/migrations/0001_waitlist.sql).
 3. Go to **Project Settings -> API** and copy:
-   - Project URL -> `SUPABASE_URL`
+   - Project URL -> `SUPABASE_URL` (or `NEXT_PUBLIC_SUPABASE_URL`; either works)
    - `service_role` secret key -> `SUPABASE_SERVICE_ROLE_KEY` (server-only, never prefix with `NEXT_PUBLIC_`).
 
 View signups in **Table Editor -> waitlist**, or export with

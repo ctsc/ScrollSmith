@@ -12,7 +12,7 @@ export default function TermsPage() {
   return (
     <LegalPage
       title="Terms of Service"
-      intro={`These terms govern your use of the ${site.name} website (${new URL(site.url).host}) and the ${site.shortName} MCP server (the "Service"). By joining the waitlist, visiting the site or connecting the MCP server to an AI assistant, you agree to them. If you do not agree, do not use the Service.`}
+      intro={`These terms govern your use of the ${site.name} website (scroll-smith.com) and the ${site.shortName} MCP server (the "Service"). By joining the waitlist, visiting the site or connecting the MCP server to an AI assistant, you agree to them. If you do not agree, do not use the Service.`}
     >
       <Section title="1. Who we are">
         <p>

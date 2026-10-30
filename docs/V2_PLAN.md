@@ -9,7 +9,7 @@ A remote **MCP server that serves skills**, plus a **website** that gets
 people to install it. No model calls, no generation cost.
 
 ```
-creator --chat--> Claude / ChatGPT / Gemini --MCP--> Scrollsmith server (skills + helpers)
+creator --chat--> Claude / ChatGPT / Gemini / Cursor --MCP--> Scrollsmith server (skills + helpers)
                         |                                   |
                         +-- uses its OWN models/code exec   +--> Supabase (event log, waitlist)
                             to render video/image/voice
@@ -36,9 +36,9 @@ Helper tools (optional, cheap, no AI): `caption_srt` (text -> SRT),
 `shorts_spec` (returns 9:16 export settings), `ffmpeg_recipe(task)`.
 
 ### Website (v2)
-- `/` landing = MCP page. Hero, **Add to Claude / ChatGPT / Gemini** tabs
-  with a copy-link button and exact steps per client, plus a "what works
-  where" note (video / image / voice support per client). Waitlist stays
+- `/` landing = MCP page. Hero, **Add to Claude / ChatGPT / Gemini / Cursor**
+  tabs with a copy-link button and exact steps per client, plus the
+  capability matrix below. Waitlist stays
   until the server is live, then the CTA becomes "Add to Claude".
 - Skill gallery: the ~50 styles as cards with a preview clip each (one
   marquee item per style eventually).
@@ -73,7 +73,22 @@ Helper tools (optional, cheap, no AI): `caption_srt` (text -> SRT),
     consumer Gemini app's support for custom MCP servers is UNVERIFIED -
     check before promising it on the site; label the tab "Gemini CLI" if
     not.
-  - Cursor: supported for free (`mcp.json`) but not a marketing focus.
+  - Cursor: `.cursor/mcp.json` or the one-click `cursor://` install deep link.
+
+### Per-client capability matrix (what we configure per MCP client)
+Decided 2026-10-30: each client gets its own config / skill variants that say
+which of video / image / voice it can do and the best route for each. To be
+verified hands-on in step 3; current best guess:
+
+| client | video | image | voice | notes |
+| --- | --- | --- | --- | --- |
+| Claude (Desktop / Code) | yes - code exec: Remotion / ffmpeg / p5 / Manim | via code (SVG/canvas renders); no native image model | no native TTS; script only (hand off to Gemini/other TTS) | Carter already makes his videos here |
+| Cursor | yes - same code path as Claude (agent runs scripts locally) | via code | no | best for creators comfortable with a code editor |
+| ChatGPT | weak - code interpreter can run ffmpeg/moviepy, no Remotion; Sora is separate | yes - native image gen | limited (voice mode, not file export) | verify what connector tools can trigger |
+| Gemini (CLI / app) | CLI: code exec yes; app: unverified | native image gen (app) | strong - native TTS / audio | best voice route |
+
+The server can read the client name from the MCP `initialize` handshake and
+return client-specific instructions automatically.
 
 ## 3. Order of build
 
@@ -95,8 +110,8 @@ Helper tools (optional, cheap, no AI): `caption_srt` (text -> SRT),
 1. **Skills repo URL** and current folder format - does each skill already
    have a `SKILL.md`-style file, or is it ad-hoc prompts?
 2. Which clients have you actually made a full video in? (Claude via code
-   execution, presumably.) Anything confirmed working in ChatGPT / Gemini?
-   This drives the "what works where" copy.
+   execution, presumably.) Anything confirmed in ChatGPT / Gemini / Cursor?
+   This fills in the capability matrix.
 3. Mascot: Spline (web 3D, free tier, embeds in React) vs. Three.js + GLB vs.
    2D Rive. Devin can wire/animate any of them but cannot sculpt the art -
    need a Spline scene, GLB, or commissioned asset. Any look in mind?

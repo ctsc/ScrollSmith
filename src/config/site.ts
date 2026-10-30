@@ -10,7 +10,7 @@ export const site = {
     tiktok: "https://tiktok.com/",
     youtube: "https://youtube.com/",
   },
-  assistants: ["Claude", "ChatGPT", "Gemini"],
+  assistants: ["Claude", "ChatGPT", "Gemini", "Cursor"],
   launchCopy: {
     badge: "Launching soon · completely free",
     headline: ["Short-form videos", "Faceless content", "Made by AI", "Posted by you"],

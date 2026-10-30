@@ -28,10 +28,11 @@ categories), the dark neon-blue brand.
 
 - **Price:** completely free, for everyone, forever-ish. Users need their own
   Claude / ChatGPT / Gemini subscription.
-- **Clients:** Claude, ChatGPT, Gemini. Cursor is not a focus (it is a code
-  editor; creators don't live there). Which client can do voice / video is
-  client-specific (Gemini strong at voice; Claude good at code-rendered
-  animation) - the per-client install page should say what works where.
+- **Clients:** Claude, ChatGPT, Gemini, Cursor (Cursor renders video/images
+  through code like Claude). Each client gets its own MCP config stating
+  which of video / image / voice it can do and which service/model is best
+  for which (e.g. Gemini strong at voice; Claude + Cursor at code-rendered
+  animation). The install page shows this matrix.
 - **Auth:** none in v2. v3 adds Google sign-in only so we can count users.
 - **Tracking in v2:** server logs every MCP connection (client name/version
   from the `initialize` handshake) and every skill fetch; site logs

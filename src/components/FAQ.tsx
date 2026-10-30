@@ -7,7 +7,7 @@ const faqs = [
   },
   {
     q: "Is it free?",
-    a: "Yes, Scrollsmith is completely free. You just need an AI assistant that supports MCP, like Claude, ChatGPT or Gemini.",
+    a: "Yes, Scrollsmith is completely free. You just need an AI assistant that supports MCP, like Claude, ChatGPT, Gemini or Cursor.",
   },
   {
     q: "Who is it for?",

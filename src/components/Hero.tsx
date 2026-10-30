@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { Sparkles } from "lucide-react";
 import { site } from "@/config/site";
 import { WaitlistForm } from "./WaitlistForm";
-import { PhoneCard, scenes } from "./PhoneCard";
+import { PhoneCard, heroScenes } from "./PhoneCard";
 
 export function Hero() {
   return (
@@ -45,9 +45,9 @@ export function Hero() {
 
         <div className="relative mx-auto hidden h-[34rem] w-full max-w-md lg:block">
           <div className="absolute left-1/2 top-1/2 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/25 blur-[90px]" />
-          <PhoneCard scene={scenes[0]} className="absolute left-0 top-10 -rotate-6 animate-float" />
-          <PhoneCard scene={scenes[3]} className="absolute left-1/2 top-0 z-10 -translate-x-1/2 scale-110 shadow-glow-lg animate-float [animation-delay:1.2s]" />
-          <PhoneCard scene={scenes[5]} className="absolute right-0 top-16 rotate-6 animate-float [animation-delay:2.4s]" />
+          <PhoneCard scene={heroScenes[0]} className="absolute left-0 top-10 -rotate-6 animate-float" />
+          <PhoneCard scene={heroScenes[1]} className="absolute left-1/2 top-0 z-10 -translate-x-1/2 scale-110 shadow-glow-lg animate-float [animation-delay:1.2s]" />
+          <PhoneCard scene={heroScenes[2]} className="absolute right-0 top-16 rotate-6 animate-float [animation-delay:2.4s]" />
         </div>
       </div>
     </section>

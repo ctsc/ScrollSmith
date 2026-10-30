@@ -1,0 +1,22 @@
+{
+  "name": "@scrollsmith/mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch --experimental-strip-types src/dev.ts",
+    "build": "tsc --noEmit",
+    "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "^2.4.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/node": "^2.1.2",
+    "@types/node": "^20.19.43",
+    "@vercel/node": "^29.0.0",
+    "typescript": "^5.9.3"
+  }
+}

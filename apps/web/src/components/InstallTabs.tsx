@@ -3,9 +3,10 @@
 import { useState } from "react";
 import { site } from "@/config/site";
 import { CopyButton } from "./CopyButton";
+import { track, type McpClient } from "@/lib/track";
 
 type Client = {
-  id: string;
+  id: McpClient;
   name: string;
   note: string;
   steps: string[];
@@ -89,7 +90,10 @@ export function InstallTabs() {
             key={c.id}
             role="tab"
             aria-selected={c.id === active}
-            onClick={() => setActive(c.id)}
+            onClick={() => {
+              setActive(c.id);
+              track("install_tab", c.id);
+            }}
             className={`shrink-0 rounded-xl px-4 py-2 text-sm font-medium transition ${
               c.id === active ? "bg-primary text-bg" : "text-muted hover:bg-surface hover:text-fg"
             }`}
@@ -104,7 +108,7 @@ export function InstallTabs() {
 
         <div className="mt-5 flex items-center gap-3 rounded-xl border border-border bg-bg px-4 py-3">
           <code className="min-w-0 flex-1 truncate font-mono text-sm text-primary">{url}</code>
-          <CopyButton text={url} label="Copy URL" />
+          <CopyButton text={url} label="Copy URL" onCopied={() => track("copy_mcp_url", client.id)} />
         </div>
 
         <ol className="mt-6 space-y-3">
@@ -122,7 +126,7 @@ export function InstallTabs() {
           <div className="mt-6">
             <div className="flex items-center justify-between gap-3">
               <p className="text-xs font-medium uppercase tracking-wide text-muted">{client.snippet.label}</p>
-              <CopyButton text={client.snippet.code} />
+              <CopyButton text={client.snippet.code} onCopied={() => track("copy_snippet", client.id)} />
             </div>
             <pre className="mt-2 overflow-x-auto rounded-xl border border-border bg-bg p-4 font-mono text-xs leading-relaxed text-fg/90">
               {client.snippet.code}
@@ -133,6 +137,7 @@ export function InstallTabs() {
         {client.link && (
           <a
             href={client.link.href}
+            onClick={() => track("cursor_deeplink", client.id)}
             className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-bg transition hover:bg-white"
           >
             {client.link.label}

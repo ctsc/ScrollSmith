@@ -23,4 +23,7 @@ Smoke test with the MCP Inspector: `npx @modelcontextprotocol/inspector`, transp
 2. Root Directory: `apps/mcp`. Framework preset: Other. No build command needed.
 3. Deploy. Then Settings → Domains → add `mcp.scroll-smith.com`
    (GoDaddy: CNAME `mcp` → `cname.vercel-dns.com`).
-4. Add any extra hostname to `PUBLIC_HOSTS` in `src/server.ts` (Host header allow-list).
+4. Env vars (Settings → Environment Variables): `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`
+   (same values as the web project) so `initialize` / tool calls land in `mcp_events`.
+   Without them tracking is a silent no-op.
+5. Add any extra hostname to `PUBLIC_HOSTS` in `src/server.ts` (Host header allow-list).

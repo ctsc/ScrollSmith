@@ -1,9 +1,13 @@
 import { createMcpHandler, McpServer } from "@modelcontextprotocol/server";
 import * as z from "zod/v4";
+import { trackMcp } from "./track.ts";
 
 export const SERVER_INFO = { name: "scrollsmith", version: "0.1.0" } as const;
 
-export const PUBLIC_HOSTS = ["mcp.scroll-smith.com", "scrollsmith-mcp.vercel.app"];
+export const PUBLIC_HOSTS = [
+  "mcp.scroll-smith.com",
+  "scrollsmith-mcp.vercel.app",
+];
 
 const CATEGORIES = ["video", "image", "voice"] as const;
 
@@ -16,6 +20,15 @@ export function buildServer(): McpServer {
     websiteUrl: "https://www.scroll-smith.com",
   });
 
+  server.server.oninitialized = () => {
+    const client = server.server.getClientVersion();
+    void trackMcp({
+      event: "initialize",
+      client_name: client?.name,
+      client_version: client?.version,
+    });
+  };
+
   server.registerTool(
     "scrollsmith_status",
     {
@@ -24,19 +37,22 @@ export function buildServer(): McpServer {
         "Confirms the Scrollsmith MCP connection is working and reports what is available right now.",
       inputSchema: z.object({}),
     },
-    async () => ({
-      content: [
-        {
-          type: "text",
-          text: [
-            "Scrollsmith is connected.",
-            `Server version ${SERVER_INFO.version}.`,
-            "Skills (video, image, voice) are not published yet; list_skills will return them when they land.",
-            "Site: https://www.scroll-smith.com",
-          ].join("\n"),
-        },
-      ],
-    }),
+    async () => {
+      await trackMcp({ event: "tool_call", tool: "scrollsmith_status" });
+      return {
+        content: [
+          {
+            type: "text",
+            text: [
+              "Scrollsmith is connected.",
+              `Server version ${SERVER_INFO.version}.`,
+              "Skills (video, image, voice) are not published yet; list_skills will return them when they land.",
+              "Site: https://www.scroll-smith.com",
+            ].join("\n"),
+          },
+        ],
+      };
+    },
   );
 
   server.registerTool(
@@ -49,22 +65,25 @@ export function buildServer(): McpServer {
         category: z.enum(CATEGORIES).optional(),
       }),
     },
-    async ({ category }) => ({
-      content: [
-        {
-          type: "text",
-          text: JSON.stringify(
-            {
-              category: category ?? "all",
-              skills: [],
-              note: "Skills are being published. Check back soon or follow https://www.scroll-smith.com.",
-            },
-            null,
-            2,
-          ),
-        },
-      ],
-    }),
+    async ({ category }) => {
+      await trackMcp({ event: "tool_call", tool: "list_skills" });
+      return {
+        content: [
+          {
+            type: "text",
+            text: JSON.stringify(
+              {
+                category: category ?? "all",
+                skills: [],
+                note: "Skills are being published. Check back soon or follow https://www.scroll-smith.com.",
+              },
+              null,
+              2,
+            ),
+          },
+        ],
+      };
+    },
   );
 
   return server;

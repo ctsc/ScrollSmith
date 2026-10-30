@@ -7,9 +7,9 @@ const agents = [
 ];
 
 const points = [
-  "One prompt box per agent. It picks the right model for you.",
-  "Your characters, styles and clips saved in one library",
-  "Fast, clean and consistent. No menus to learn.",
+  "No new app. Paste one link into Claude, ChatGPT or Cursor and you're set.",
+  "Just describe the video. Your AI picks the right tool and does the rest.",
+  "Completely free. You only need the AI subscription you already have.",
 ];
 
 export function Simplicity() {
@@ -19,7 +19,7 @@ export function Simplicity() {
         <div>
           <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">We focus on simplicity.</h2>
           <p className="mt-4 text-muted">
-            Every feature is built into our three main agents, so anything you want to do with video, image or voice is a single step away. Type the idea, pick the look, publish.
+            Everything is built into three tools your AI already knows how to use, so anything you want to do with video, image or voice is one message away. Describe the idea, get the clip, post it.
           </p>
           <ul className="mt-6 space-y-3 text-sm">
             {points.map((t) => (

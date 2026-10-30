@@ -11,7 +11,7 @@ export function FinalCTA() {
             Be first when the doors open
           </h2>
           <p className="mt-4 text-muted">
-            Early-access members get free starter credits and a say in what we build next.
+            Get one email when the Scrollsmith MCP goes live, with the link to add it to Claude, ChatGPT or Cursor. Completely free.
           </p>
           <div className="mt-8">
             <Suspense fallback={<div className="h-12 rounded-xl bg-surface/60" />}>

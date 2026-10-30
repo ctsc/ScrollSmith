@@ -2,8 +2,12 @@ import { site } from "@/config/site";
 
 const faqs = [
   {
+    q: "What is an MCP?",
+    a: "A small add-on that gives an AI assistant new tools. Add Scrollsmith to Claude, ChatGPT or Cursor and it can make videos, images and voiceovers for you from a normal chat message.",
+  },
+  {
     q: "Is it free?",
-    a: "Creating an account is free. Early-access members get free starter credits. After that, simple monthly plans starting at $15 for people exploring, with bigger plans for serious creators.",
+    a: "Yes, Scrollsmith is completely free. You just need an AI assistant that supports MCP, like Claude, ChatGPT or Cursor.",
   },
   {
     q: "Who is it for?",
@@ -11,11 +15,11 @@ const faqs = [
   },
   {
     q: "Do I need any editing experience?",
-    a: "No. You type an idea, choose a style, and get a finished 9:16 video with voiceover and captions. Light trimming and stitching is built in if you want it.",
+    a: "No. You describe the idea to your AI, it uses Scrollsmith to make a finished 9:16 video with voiceover and captions, and you post it.",
   },
   {
-    q: "Which AI models do you use?",
-    a: "The best current video, image and voice models, all behind one composer. You never have to pick between them unless you want to.",
+    q: "Which AI models make the videos?",
+    a: "The best current video, image and voice models, behind three simple tools. Your assistant picks the right one so you never have to.",
   },
   {
     q: "What about safety?",

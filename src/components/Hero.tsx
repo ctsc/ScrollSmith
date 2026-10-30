@@ -17,10 +17,12 @@ export function Hero() {
             {site.launchCopy.badge}
           </span>
 
-          <h1 className="mt-6 font-display text-[clamp(2rem,9.6vw,3.75rem)] font-semibold leading-[1.05] tracking-tight whitespace-nowrap lg:text-7xl animate-fade-up delay-100">
-            <span className="block">{site.launchCopy.headline[0]}</span>
-            <span className="block gradient-text text-glow">{site.launchCopy.headline[1]}</span>
-            <span className="block">{site.launchCopy.headline[2]}</span>
+          <h1 className="mt-6 font-display text-[clamp(2rem,9.6vw,3.75rem)] font-semibold leading-[1.05] tracking-tight whitespace-nowrap lg:text-6xl animate-fade-up delay-100">
+            {site.launchCopy.headline.map((line, i) => (
+              <span key={line} className={i === 2 ? "block gradient-text text-glow" : "block"}>
+                {line}
+              </span>
+            ))}
           </h1>
 
           <p className="mx-auto mt-6 max-w-xl text-base text-muted sm:text-lg lg:mx-0 animate-fade-up delay-200">
@@ -34,10 +36,10 @@ export function Hero() {
           </div>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-muted lg:justify-start animate-fade-up delay-500">
-            <span>Built for</span>
-            <span className="font-medium text-fg">Instagram Reels</span>
-            <span className="font-medium text-fg">TikTok</span>
-            <span className="font-medium text-fg">YouTube Shorts</span>
+            <span>Works with</span>
+            {site.assistants.map((a) => (
+              <span key={a} className="font-medium text-fg">{a}</span>
+            ))}
           </div>
         </div>
 

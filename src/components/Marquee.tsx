@@ -11,9 +11,6 @@ export function Marquee() {
           <PhoneCard key={`${s.title}-${i}`} scene={s} className="w-36 sm:w-40" />
         ))}
       </div>
-      <p className="mt-6 text-center text-xs text-muted">
-        Concept previews. Real generations coming at launch.
-      </p>
     </section>
   );
 }

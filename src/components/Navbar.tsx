@@ -10,7 +10,6 @@ export function Navbar() {
           <Logo />
         </Link>
         <nav className="hidden items-center gap-8 text-sm text-muted md:flex">
-          <a href="#how" className="transition hover:text-fg">How it works</a>
           <a href="#features" className="transition hover:text-fg">Features</a>
           <a href="#faq" className="transition hover:text-fg">FAQ</a>
         </nav>

@@ -2,10 +2,6 @@ import { site } from "@/config/site";
 
 const faqs = [
   {
-    q: "When does it launch?",
-    a: "We're building now. Join the list and you'll get one email the day the app opens, plus early-access credits to try it for free.",
-  },
-  {
     q: "Is it free?",
     a: "Creating an account is free. Early-access members get free starter credits. After that, simple monthly plans starting at $15 for people exploring, with bigger plans for serious creators.",
   },

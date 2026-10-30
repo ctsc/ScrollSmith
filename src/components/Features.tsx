@@ -29,16 +29,7 @@ export function Features() {
     <section id="features" className="relative scroll-mt-28 overflow-hidden py-24">
       <div className="pointer-events-none absolute right-[-10rem] top-20 h-[30rem] w-[30rem] rounded-full bg-primary-deep/20 blur-[120px]" />
       <div className="relative mx-auto max-w-6xl px-6">
-        <div className="max-w-3xl">
-          <h2 className="font-display text-[clamp(1.125rem,4.6vw,3rem)] font-semibold tracking-tight whitespace-nowrap">
-            Everything you need, nothing you don&apos;t
-          </h2>
-          <p className="mt-4 text-muted">
-            Other AI tools bolt on a new &ldquo;studio&rdquo; every month until you need a map to find the generate button. We kept it to the three things creators actually use.
-          </p>
-        </div>
-
-        <div className="mt-14 grid gap-5 lg:grid-cols-3">
+        <div className="grid gap-5 lg:grid-cols-3">
           {pillars.map((p) => (
             <article
               key={p.name}

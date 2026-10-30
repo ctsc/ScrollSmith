@@ -1,22 +1,28 @@
-import { X, Check } from "lucide-react";
+import { Check, Clapperboard, ImageIcon, Mic } from "lucide-react";
 
-const them = ["Studio", "Image", "Video", "Voice", "Super Agent", "Mirage Studio", "Faceless Studio", "Film Studio", "Ads Studio"];
-const us = ["Video", "Image", "Voice"];
+const agents = [
+  { icon: Clapperboard, name: "Video", modes: ["Faceless series", "Person swap", "Cinematic", "Product ads"] },
+  { icon: ImageIcon, name: "Image", modes: ["Thumbnails", "Scenes", "Characters", "Edit by prompt"] },
+  { icon: Mic, name: "Voice", modes: ["Voiceover", "Lip-sync", "Voice clone", "Languages"] },
+];
+
+const points = [
+  "One prompt box per agent. It picks the right model for you.",
+  "Your characters, styles and clips saved in one library",
+  "Fast, clean and consistent. No menus to learn.",
+];
 
 export function Simplicity() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-24">
       <div className="grid items-center gap-10 rounded-[2rem] border border-border bg-bg-elevated p-8 sm:p-12 lg:grid-cols-2">
         <div>
-          <p className="text-sm font-medium text-primary">Why creators switch</p>
-          <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-            Nine tabs is not a feature.
-          </h2>
+          <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">We focus on simplicity.</h2>
           <p className="mt-4 text-muted">
-            Most AI video apps ship every model and every &ldquo;studio&rdquo; as its own page. You end up paying for a toolbox when you wanted a video. We put the complexity behind one prompt box, so you spend your time on ideas, not menus.
+            Every feature is built into our three main agents, so anything you want to do with video, image or voice is a single step away. Type the idea, pick the look, publish.
           </p>
           <ul className="mt-6 space-y-3 text-sm">
-            {["One composer that picks the right model for you", "Your characters, styles and clips saved in one library", "Priced for creators: simple monthly plans, no surprise fees"].map((t) => (
+            {points.map((t) => (
               <li key={t} className="flex items-start gap-2.5">
                 <Check className="mt-0.5 size-4 shrink-0 text-primary" />
                 <span>{t}</span>
@@ -25,30 +31,24 @@ export function Simplicity() {
           </ul>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div className="rounded-2xl border border-border bg-surface p-5">
-            <p className="text-xs font-medium uppercase tracking-wide text-muted">Everyone else</p>
-            <ul className="mt-4 space-y-2">
-              {them.map((t) => (
-                <li key={t} className="flex items-center gap-2 text-sm text-muted line-through decoration-muted/50">
-                  <X className="size-3.5 text-red-400/70" />
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="rounded-2xl border border-primary/40 bg-primary/10 p-5 shadow-glow">
-            <p className="text-xs font-medium uppercase tracking-wide text-primary">Us</p>
-            <ul className="mt-4 space-y-2">
-              {us.map((t) => (
-                <li key={t} className="flex items-center gap-2 text-sm font-medium">
-                  <Check className="size-3.5 text-primary" />
-                  {t}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-6 text-xs text-muted">Everything else lives inside Video as a mode.</p>
-          </div>
+        <div className="grid gap-4">
+          {agents.map((a) => (
+            <div key={a.name} className="flex items-center gap-4 rounded-2xl border border-primary/40 bg-primary/10 p-4 shadow-glow sm:p-5">
+              <div className="grid size-11 shrink-0 place-items-center rounded-xl bg-primary text-bg">
+                <a.icon className="size-5" />
+              </div>
+              <div className="min-w-0">
+                <p className="font-display text-lg font-semibold">{a.name}</p>
+                <div className="mt-1.5 flex flex-wrap gap-1.5">
+                  {a.modes.map((m) => (
+                    <span key={m} className="rounded-full border border-border bg-surface px-2.5 py-0.5 text-xs text-muted">
+                      {m}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

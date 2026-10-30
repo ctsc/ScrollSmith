@@ -69,9 +69,12 @@ Top-level app nav target: **Video | Image | Voice | Library** + marketing pages
    client / types package.
 8. **Safety / legal:**
    - NSFW strictly filtered (prompt + output moderation).
-   - **Age gate at signup** (minimum age, DOB / attestation, per
-     jurisdiction; COPPA / GDPR-K aware). Terms, Privacy, AI-safety and
-     copyright policies.
+   - **Age policy (decided 2026-10-30): 18+.** Under-18s may register only
+     with parental approval. Signup = DOB/attestation + parental-consent
+     path for minors; store the attestation. Rationale: AI providers
+     (voice clone, person swap) require 18+, App Store rating will likely
+     be 17+/18+ anyway, COPPA floor is 13. Landing page footer says
+     "18+ only". Terms, Privacy, AI-safety and copyright policies.
    - Person-swap allowed **only** with (a) pre-made / publicly known AI
      characters (not necessarily made by that user) or (b) the user's own
      uploaded self-image. No arbitrary real people.

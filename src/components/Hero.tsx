@@ -17,12 +17,10 @@ export function Hero() {
             {site.launchCopy.badge}
           </span>
 
-          <h1 className="mt-6 font-display text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl animate-fade-up delay-100">
-            {site.launchCopy.headline[0]}
-            <br />
-            <span className="gradient-text text-glow">{site.launchCopy.headline[1]}</span>
-            <br />
-            {site.launchCopy.headline[2]}
+          <h1 className="mt-6 font-display text-[clamp(2rem,9.6vw,3.75rem)] font-semibold leading-[1.05] tracking-tight whitespace-nowrap lg:text-7xl animate-fade-up delay-100">
+            <span className="block">{site.launchCopy.headline[0]}</span>
+            <span className="block gradient-text text-glow">{site.launchCopy.headline[1]}</span>
+            <span className="block">{site.launchCopy.headline[2]}</span>
           </h1>
 
           <p className="mx-auto mt-6 max-w-xl text-base text-muted sm:text-lg lg:mx-0 animate-fade-up delay-200">

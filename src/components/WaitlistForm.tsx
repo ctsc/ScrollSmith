@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { ArrowRight, Check, Loader2 } from "lucide-react";
 import { platforms, site, type Platform } from "@/config/site";
 
@@ -14,6 +14,12 @@ export function WaitlistForm({ id, compact = false }: { id?: string; compact?: b
   const [email, setEmail] = useState("");
   const [selected, setSelected] = useState<Platform[]>([]);
   const [state, setState] = useState<State>({ kind: "idle" });
+  const [expanded, setExpanded] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (expanded) inputRef.current?.focus();
+  }, [expanded]);
 
   function toggle(p: Platform) {
     setSelected((s) => (s.includes(p) ? s.filter((x) => x !== p) : [...s, p]));
@@ -62,9 +68,19 @@ export function WaitlistForm({ id, compact = false }: { id?: string; compact?: b
 
   return (
     <form id={id} onSubmit={onSubmit} className="w-full text-left" noValidate>
-      <div className="flex flex-col gap-2 sm:flex-row">
+      <button
+        type="button"
+        onClick={() => setExpanded(true)}
+        className={`group inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 font-semibold text-bg transition hover:bg-white sm:hidden ${expanded ? "hidden" : ""}`}
+      >
+        {site.launchCopy.cta}
+        <ArrowRight className="size-4 transition group-hover:translate-x-0.5" />
+      </button>
+
+      <div className={`flex-col gap-2 sm:flex sm:flex-row ${expanded ? "flex animate-fade-up" : "hidden"}`}>
         <label className="sr-only" htmlFor={`${id ?? "wl"}-email`}>Email address</label>
         <input
+          ref={inputRef}
           id={`${id ?? "wl"}-email`}
           type="email"
           required
@@ -82,13 +98,14 @@ export function WaitlistForm({ id, compact = false }: { id?: string; compact?: b
           className="group inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-5 font-semibold text-bg transition hover:bg-white disabled:opacity-70"
         >
           {state.kind === "loading" ? <Loader2 className="size-4 animate-spin" /> : null}
-          {site.launchCopy.cta}
-          {state.kind !== "loading" ? <ArrowRight className="size-4 transition group-hover:translate-x-0.5" /> : null}
+          <span className="sm:hidden">Done</span>
+          <span className="hidden sm:inline">{site.launchCopy.cta}</span>
+          {state.kind !== "loading" ? <ArrowRight className="hidden size-4 transition group-hover:translate-x-0.5 sm:block" /> : null}
         </button>
       </div>
 
       {!compact ? (
-        <div className="mt-3 flex flex-wrap items-center gap-2">
+        <div className={`mt-3 flex-wrap items-center gap-2 sm:flex ${expanded ? "flex" : "hidden"}`}>
           <span className="text-xs text-muted">I post on:</span>
           {platforms.map((p) => {
             const active = selected.includes(p.id);

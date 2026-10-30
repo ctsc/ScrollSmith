@@ -1,9 +1,10 @@
 export const site = {
-  name: "Reelmint",
+  name: "Scrollsmith AI",
+  shortName: "Scrollsmith",
   tagline: "AI short-form video for creators",
   description:
     "Turn one idea into scroll-stopping Reels, TikToks and Shorts. AI video, image and voice in one simple studio built for faceless and short-form creators. Free to sign up.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://reelmint.app",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://scrollsmith.ai",
   social: {
     instagram: "https://instagram.com/",
     tiktok: "https://tiktok.com/",

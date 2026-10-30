@@ -17,7 +17,7 @@ Last updated: 2026-10-30
 - **Brand vibe:** Higgsfield-style dark / cinematic. Flashloop's brand color is
   neon orange; **ours is neon blue**. Homepage must read as professional and
   dead-simple to use.
-- **Brand name:** TBD. Working placeholder is `Reelmint` (single constant in
+- **Brand name:** **Scrollsmith AI** (configured in
   `src/config/site.ts`).
 
 ## 2. Flashloop feature audit -> what we keep

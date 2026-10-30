@@ -11,6 +11,7 @@ export const site = {
     youtube: "https://www.youtube.com/@CubeStoriesDaily",
   },
   assistants: ["Claude", "ChatGPT", "Gemini", "Cursor"],
+  mcpUrl: "https://mcp.scroll-smith.com/mcp",
   launchCopy: {
     badge: "Launching soon · completely free",
     headline: ["Short-form videos", "Faceless content", "Made by AI", "Posted by you"],

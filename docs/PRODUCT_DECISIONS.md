@@ -1,14 +1,49 @@
 # Product Decisions & Master Plan Notes
 
-Living document. Captures decisions made with Carter so far, the parked
-technical questions, and the phased plan. Baseline we are cloning (and
-simplifying): https://www.flashloop.ai
+Living document. Captures decisions made with Carter, parked questions, and
+the phased plan.
 
 Last updated: 2026-10-30
 
 ---
 
-## 1. Positioning
+## 0. THE PIVOT (2026-10-30) - read this first
+
+Scrollsmith is **not** a standalone AI app anymore. It is a **free MCP
+server** that creators add to the AI assistant they already pay for (Claude,
+ChatGPT, Cursor; Gemini if/when it supports MCP) so that assistant can make
+faceless short-form video, images and voiceovers for them.
+
+What that removes: the in-app Video/Image/Voice pages, composer, library,
+credits, pricing tiers, Stripe, Creator Program, mobile app, and (for v2)
+auth/signup. What stays: the landing page (now the MCP page), the waitlist,
+the Video / Image / Voice framing (they become the three MCP tools), the
+dark neon-blue brand.
+
+- **Price:** completely free. Users need their own Claude / ChatGPT / Cursor
+  subscription. OPEN: who pays for the actual video/image/voice model calls
+  (see V2_PLAN.md, question 1).
+- **Auth:** none in v2. v3 adds Google sign-in (username/password optional)
+  purely so we can count users and apply per-user quotas.
+- **Tracking in v2:** the MCP server logs every connection and tool call
+  (client name/version comes in the MCP `initialize` handshake), plus
+  "copy MCP link" clicks on the site. That is how we count adoption without
+  accounts.
+- **Website:** one site, landing = MCP page. Needs a unique visual identity -
+  Carter wants a **3D animated character/mascot** that lives on the page
+  and becomes the symbol people associate with Scrollsmith. Mobile must look
+  as good as desktop. Marquee gets real preview videos (Carter generates them
+  with a video model; Devin cannot generate video).
+- **Repo layout:** same repo, MCP server in its own folder (`apps/mcp`),
+  website in `apps/web`.
+
+Everything below section 0 that talks about app pages, pricing, credits,
+mobile app, Creator Program or auth is **historical** and kept only for
+context.
+
+---
+
+## 1. Positioning (historical, pre-pivot)
 
 - **What:** AI image/video/voice content generation, tailored for content
   creators. Fewer, clearer features than Flashloop.

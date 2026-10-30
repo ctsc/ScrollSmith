@@ -11,6 +11,8 @@ export function Footer() {
           <a href="#features" className="transition hover:text-fg">Features</a>
           <a href="#faq" className="transition hover:text-fg">FAQ</a>
           <Link href="/mcp" className="transition hover:text-fg">Add the MCP</Link>
+          <Link href="/terms" className="transition hover:text-fg">Terms</Link>
+          <Link href="/privacy" className="transition hover:text-fg">Privacy</Link>
           <a href={site.social.instagram} target="_blank" rel="noreferrer" className="transition hover:text-fg">Instagram</a>
           <a href={site.social.tiktok} target="_blank" rel="noreferrer" className="transition hover:text-fg">TikTok</a>
         </nav>

@@ -4,7 +4,7 @@ export const site = {
   tagline: "The free MCP for faceless short-form video",
   description:
     "Add Scrollsmith to Claude, ChatGPT or Gemini and turn one idea into a finished Reel, TikTok or YouTube Short. Video, image and voice tools for faceless creators. Completely free.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://scrollsmith.ai",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.scroll-smith.com",
   social: {
     instagram: "https://www.instagram.com/cubestoriesdaily/",
     tiktok: "https://www.tiktok.com/@cubestoriesdaily",
@@ -12,6 +12,8 @@ export const site = {
   },
   assistants: ["Claude", "ChatGPT", "Gemini", "Cursor"],
   mcpUrl: "https://mcp.scroll-smith.com/mcp",
+  contactEmail: "hello@scroll-smith.com",
+  legalUpdated: "October 30, 2026",
   launchCopy: {
     badge: "Launching soon · completely free",
     headline: ["Short-form videos", "Faceless content", "Made by AI", "Posted by you"],

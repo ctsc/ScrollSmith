@@ -3,6 +3,7 @@ import { Sparkles } from "lucide-react";
 import { site } from "@/config/site";
 import { WaitlistForm } from "./WaitlistForm";
 import { PhoneCard, heroScenes } from "./PhoneCard";
+import { Mascot } from "./Mascot";
 
 export function Hero() {
   return (
@@ -12,6 +13,7 @@ export function Hero() {
 
       <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-6 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="text-center lg:text-left">
+          <Mascot media="(max-width: 1023px)" className="mx-auto mb-2 w-32 animate-fade-up lg:hidden" />
           <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary animate-fade-up">
             <Sparkles className="size-3.5" />
             {site.launchCopy.badge}
@@ -48,6 +50,7 @@ export function Hero() {
           <PhoneCard scene={heroScenes[0]} className="absolute left-0 top-10 -rotate-6 animate-float" />
           <PhoneCard scene={heroScenes[1]} className="absolute left-1/2 top-0 z-10 -translate-x-1/2 scale-110 shadow-glow-lg animate-float [animation-delay:1.2s]" />
           <PhoneCard scene={heroScenes[2]} className="absolute right-0 top-16 rotate-6 animate-float [animation-delay:2.4s]" />
+          <Mascot media="(min-width: 1024px)" className="absolute -top-24 left-1/2 z-20 w-48 -translate-x-1/2 drop-shadow-[0_0_30px_rgba(61,208,255,0.35)]" />
         </div>
       </div>
     </section>

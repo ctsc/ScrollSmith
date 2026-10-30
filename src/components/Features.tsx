@@ -29,9 +29,8 @@ export function Features() {
     <section id="features" className="relative scroll-mt-28 overflow-hidden py-24">
       <div className="pointer-events-none absolute right-[-10rem] top-20 h-[30rem] w-[30rem] rounded-full bg-primary-deep/20 blur-[120px]" />
       <div className="relative mx-auto max-w-6xl px-6">
-        <div className="max-w-2xl">
-          <p className="text-sm font-medium text-primary">Video &middot; Image &middot; Voice</p>
-          <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-5xl">
+        <div className="max-w-3xl">
+          <h2 className="font-display text-[clamp(1.5rem,6.6vw,3rem)] font-semibold tracking-tight whitespace-nowrap">
             Everything you need, nothing you don&apos;t
           </h2>
           <p className="mt-4 text-muted">

@@ -1,23 +1,18 @@
 import { Navbar } from "@/components/Navbar";
-import { Hero } from "@/components/Hero";
+import { Install } from "@/components/Install";
 import { Marquee } from "@/components/Marquee";
-import { Features } from "@/components/Features";
-import { Simplicity } from "@/components/Simplicity";
 import { FAQ } from "@/components/FAQ";
-import { FinalCTA } from "@/components/FinalCTA";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="flex-1">
-        <Hero />
+      <main className="relative flex-1">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-[70vh] bg-grid" />
+        <Install />
         <Marquee />
-        <Features />
-        <Simplicity />
         <FAQ />
-        <FinalCTA />
       </main>
       <Footer />
     </>

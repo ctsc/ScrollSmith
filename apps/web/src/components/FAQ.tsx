@@ -3,7 +3,7 @@ import { site } from "@/config/site";
 const faqs = [
   {
     q: "What is an MCP?",
-    a: "A small add-on that gives an AI assistant new tools. Add Scrollsmith to Claude, ChatGPT or Gemini and it can make videos, images and voiceovers for you from a normal chat message.",
+    a: "A small add-on that gives an AI assistant new tools. Add Scrollsmith to Claude, ChatGPT, Gemini CLI or Cursor and it can plan, script and assemble faceless videos, images and voiceovers for you from a normal chat message.",
   },
   {
     q: "Is it free?",
@@ -19,7 +19,11 @@ const faqs = [
   },
   {
     q: "Which AI models make the videos?",
-    a: "The best current video, image and voice models, behind three simple tools. Your assistant picks the right one so you never have to.",
+    a: "The ones your assistant already has. Scrollsmith is a library of skills, not a model: it never calls video, image or voice models itself, so there is nothing to pay for and nothing new to sign up for.",
+  },
+  {
+    q: "Why is my URL different from my friend's?",
+    a: "Each visitor gets an anonymous install key baked into the URL. It lets us count how many creators use Scrollsmith without accounts or emails. It is not tied to your name, and you can clear it by clearing your cookies.",
   },
   {
     q: "What about safety?",

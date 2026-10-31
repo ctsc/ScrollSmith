@@ -21,12 +21,6 @@ export const scenes: Scene[] = [
   { title: "Building a city in 60 seconds", style: "Low-poly 3D", gradient: "from-orange-300/60 via-pink-700/50 to-slate-950", views: "2.2M", meta: "EP 5 · 1:00" },
 ];
 
-export const heroScenes: Scene[] = [
-  { title: "The lighthouse keeper's last night", style: "Stop motion", gradient: "from-blue-300/60 via-blue-800/60 to-slate-950", views: "3.1M", meta: "EP 6 · 0:47" },
-  { title: "How ants built an empire", style: "Comic book", gradient: "from-red-400/60 via-amber-700/50 to-slate-950", views: "6.8M", meta: "EP 2 · 0:39" },
-  { title: "Where do dreams go after you wake?", style: "Oil painting", gradient: "from-purple-300/60 via-indigo-800/60 to-slate-950", views: "1.4M", meta: "EP 11 · 0:55" },
-];
-
 export function PhoneCard({ scene, className = "" }: { scene: Scene; className?: string }) {
   return (
     <div

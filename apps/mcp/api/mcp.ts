@@ -1,5 +1,5 @@
 import { hostHeaderValidationResponse } from "@modelcontextprotocol/server";
-import { handler, PUBLIC_HOSTS } from "../src/server.js";
+import { createHandler, installKeyFromPath, PUBLIC_HOSTS } from "../src/server.js";
 
 const allowedHosts = [
   ...PUBLIC_HOSTS,
@@ -9,7 +9,10 @@ const allowedHosts = [
 ].filter((h): h is string => Boolean(h));
 
 async function serve(request: Request): Promise<Response> {
-  return hostHeaderValidationResponse(request, allowedHosts) ?? handler.fetch(request);
+  const rejected = hostHeaderValidationResponse(request, allowedHosts);
+  if (rejected) return rejected;
+  const key = installKeyFromPath(new URL(request.url).pathname);
+  return createHandler(key).fetch(request);
 }
 
 export { serve as GET, serve as POST, serve as DELETE };

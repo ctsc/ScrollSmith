@@ -5,6 +5,10 @@ it serves skills (instructions, templates, helper recipes) that the user's own
 AI assistant executes. Built on `@modelcontextprotocol/server` v2.
 
 - Public endpoint: `https://mcp.scroll-smith.com/mcp`
+- Keyed endpoint: `https://mcp.scroll-smith.com/mcp/<install_key>` — the website mints an
+  anonymous `k_…` key per visitor and shows this URL; the key is logged on every
+  `initialize` / tool call (`mcp_events.install_key`) so distinct installs can be counted.
+  Plain `/mcp` keeps working (logged with a null key).
 - Tools today: `scrollsmith_status`, `list_skills` (stub until skills land)
 
 ## Local

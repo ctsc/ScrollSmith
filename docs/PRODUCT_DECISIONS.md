@@ -122,7 +122,7 @@ Top-level app nav target: **Video | Image | Voice | Library** + marketing pages
 
 ## 4. Phased plan
 
-### Phase 0 - Waitlist landing page (CURRENT)
+### Phase 0 - Waitlist landing page (DONE, replaced by the install site in V2)
 - Single-page site, dark neon-blue cinematic brand.
 - Collect emails ("be first to know when the app launches - free to sign
   up"). Store in Supabase `waitlist` table with `source` (`?ref=ig` etc.).
@@ -173,6 +173,17 @@ Defaults in parentheses; we proceed with the default unless changed.
 9. **Budget / timeline:** monthly AI API spend during build; target MVP
    date.
 10. **Team:** solo + Devin, or other devs / designers?
-11. **Email provider** for waitlist launch announcement + transactional
+11. **Email provider** for a launch announcement + transactional
     mail (Resend default).
 12. **Analytics** (Vercel Analytics / PostHog default: PostHog).
+
+## Install keys instead of OAuth (V2.1)
+
+- Goal was only "how many people use the MCP". OAuth adds a sign-in step to every
+  client for data we don't need (emails), so: no auth.
+- The install page mints an anonymous `k_<20 chars>` key per browser (`/api/key`,
+  httpOnly cookie, `install_keys` table) and shows `https://mcp.scroll-smith.com/mcp/<key>`.
+  The server logs the key on every `initialize` / tool call → distinct installs,
+  retention, per-tool usage. Plain `/mcp` still works for people who connected before.
+- Waitlist removed from the site (homepage = install page). The Supabase `waitlist`
+  table and its rows are kept; nothing writes to it anymore.

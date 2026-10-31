@@ -11,7 +11,10 @@ export const PUBLIC_HOSTS = [
 
 const CATEGORIES = ["video", "image", "voice"] as const;
 
-export function buildServer(): McpServer {
+/** Matches the anonymous install key the website bakes into each visitor's MCP URL. */
+export const INSTALL_KEY_RE = /^k_[a-z0-9]{20}$/;
+
+export function buildServer(installKey?: string): McpServer {
   const server = new McpServer({
     ...SERVER_INFO,
     title: "Scrollsmith",
@@ -24,6 +27,7 @@ export function buildServer(): McpServer {
     const client = server.server.getClientVersion();
     void trackMcp({
       event: "initialize",
+      install_key: installKey,
       client_name: client?.name,
       client_version: client?.version,
     });
@@ -38,7 +42,7 @@ export function buildServer(): McpServer {
       inputSchema: z.object({}),
     },
     async () => {
-      await trackMcp({ event: "tool_call", tool: "scrollsmith_status" });
+      await trackMcp({ event: "tool_call", tool: "scrollsmith_status", install_key: installKey });
       return {
         content: [
           {
@@ -66,7 +70,7 @@ export function buildServer(): McpServer {
       }),
     },
     async ({ category }) => {
-      await trackMcp({ event: "tool_call", tool: "list_skills" });
+      await trackMcp({ event: "tool_call", tool: "list_skills", install_key: installKey });
       return {
         content: [
           {
@@ -89,4 +93,13 @@ export function buildServer(): McpServer {
   return server;
 }
 
-export const handler = createMcpHandler(() => buildServer());
+/** Stateless: a handler per request, so the install key from the URL can be attached to every event it logs. */
+export function createHandler(installKey?: string) {
+  return createMcpHandler(() => buildServer(installKey));
+}
+
+/** Pulls the install key out of `/mcp/<key>`; undefined for the plain `/mcp` URL or a malformed key. */
+export function installKeyFromPath(pathname: string): string | undefined {
+  const key = pathname.match(/^\/(?:api\/)?mcp\/([^/]+)\/?$/)?.[1];
+  return key && INSTALL_KEY_RE.test(key) ? key : undefined;
+}

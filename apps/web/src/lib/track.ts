@@ -1,9 +1,9 @@
 export type SiteEvent = "copy_mcp_url" | "copy_snippet" | "install_tab" | "cursor_deeplink";
 export type McpClient = "claude" | "chatgpt" | "gemini" | "cursor";
 
-export function track(event: SiteEvent, client?: McpClient) {
+export function track(event: SiteEvent, client?: McpClient, key?: string | null) {
   if (typeof window === "undefined") return;
-  const body = JSON.stringify({ event, client, path: window.location.pathname });
+  const body = JSON.stringify({ event, client, key: key ?? undefined, path: window.location.pathname });
   try {
     if (navigator.sendBeacon) {
       navigator.sendBeacon("/api/events", new Blob([body], { type: "application/json" }));

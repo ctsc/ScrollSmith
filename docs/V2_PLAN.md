@@ -11,7 +11,7 @@ people to install it. No model calls, no generation cost.
 ```
 creator --chat--> Claude / ChatGPT / Gemini / Cursor --MCP--> Scrollsmith server (skills + helpers)
                         |                                   |
-                        +-- uses its OWN models/code exec   +--> Supabase (event log, waitlist)
+                        +-- uses its OWN models/code exec   +--> Supabase (event log, install keys)
                             to render video/image/voice
 ```
 
@@ -38,8 +38,8 @@ Helper tools (optional, cheap, no AI): `caption_srt` (text -> SRT),
 ### Website (v2)
 - `/` landing = MCP page. Hero, **Add to Claude / ChatGPT / Gemini / Cursor**
   tabs with a copy-link button and exact steps per client, plus the
-  capability matrix below. Waitlist stays
-  until the server is live, then the CTA becomes "Add to Claude".
+  capability matrix below. The URL shown is personal (`/mcp/<install_key>`);
+  waitlist removed once the server went live.
 - Skill gallery: the ~50 styles as cards with a preview clip each (one
   marquee item per style eventually).
 - Unique identity: **3D animated mascot**, real preview videos, mobile-first
@@ -59,7 +59,7 @@ Helper tools (optional, cheap, no AI): `caption_srt` (text -> SRT),
   no long-running jobs - Vercel Hobby limits are not a problem technically
   (Hobby still forbids commercial use; a free product is a grey area - move
   to Pro if Vercel complains).
-- **Data (Supabase):** `waitlist` (exists), `mcp_events` (client name +
+- **Data (Supabase):** `install_keys` (one row per visitor key), `mcp_events` (client name + install key +
   version, tool/prompt/resource, skill name, anonymous client hash),
   `site_events`. Service-role key server-side only, as today.
 - **Client install paths:**

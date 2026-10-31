@@ -10,14 +10,14 @@ export function Navbar() {
           <Logo />
         </Link>
         <nav className="hidden items-center gap-8 text-sm text-muted md:flex">
-          <a href="#features" className="transition hover:text-fg">Features</a>
           <a href="#faq" className="transition hover:text-fg">FAQ</a>
+          <Link href="/privacy" className="transition hover:text-fg">Privacy</Link>
         </nav>
         <a
-          href="#waitlist"
+          href="#install"
           className="group inline-flex items-center gap-1.5 rounded-xl bg-primary px-3.5 py-2 text-sm font-semibold text-bg transition hover:bg-white sm:px-4"
         >
-          Get early access
+          Add the MCP
           <ArrowRight className="size-4 transition group-hover:translate-x-0.5" />
         </a>
       </div>

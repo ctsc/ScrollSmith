@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { InstallTabs } from "@/components/InstallTabs";
-import { Mascot } from "@/components/Mascot";
 import { site } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -17,7 +16,6 @@ export default function McpPage() {
       <main className="relative flex-1">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-[70vh] bg-grid" />
         <section className="relative mx-auto max-w-3xl px-6 pb-24 pt-36 sm:pt-40">
-          <Mascot media="(min-width: 640px)" className="absolute right-6 top-28 hidden w-40 sm:block" />
           <p className="text-sm font-medium text-primary">Add the MCP</p>
           <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl">
             One link. <span className="gradient-text">Any assistant.</span>

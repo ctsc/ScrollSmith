@@ -1,6 +1,6 @@
 import { createMcpHandler, McpServer } from "@modelcontextprotocol/server";
 import * as z from "zod/v4";
-import { trackMcp } from "./track.ts";
+import { trackMcp } from "./track.js";
 
 export const SERVER_INFO = { name: "scrollsmith", version: "0.1.0" } as const;
 

@@ -1,5 +1,5 @@
 import { hostHeaderValidationResponse } from "@modelcontextprotocol/server";
-import { handler, PUBLIC_HOSTS } from "../src/server.ts";
+import { handler, PUBLIC_HOSTS } from "../src/server.js";
 
 const allowedHosts = [
   ...PUBLIC_HOSTS,

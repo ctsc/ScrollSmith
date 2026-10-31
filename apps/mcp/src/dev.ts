@@ -1,6 +1,6 @@
 import { createServer } from "node:http";
 import { toNodeHandler } from "@modelcontextprotocol/node";
-import { handler } from "./server.ts";
+import { handler } from "./server.js";
 
 const port = Number(process.env.PORT ?? 3001);
 const nodeHandler = toNodeHandler(handler);

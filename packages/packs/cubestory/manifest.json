@@ -1,0 +1,53 @@
+{
+  "schema_version": "style_pack.v1",
+  "pack_id": "cubestory",
+  "name": "Cubestory (voxel 3D what-if)",
+  "version": "0.1.0",
+  "description": "Voxel 3D escalation format: what if you got 2x X every day. Beat-synced spawns, value HUD, yellow pop captions, seamless rewind loop.",
+  "engine": "remotion",
+  "engine_features": ["@remotion/three", "react-three-fiber", "@remotion/captions"],
+  "scope": { "faceless": true, "footage": false, "aspects": ["9:16", "1:1"] },
+  "tokens": {
+    "color": { "bg": "#0b0d12", "primary": "#ffd60a", "secondary": "#3a86ff", "accent": "#ff006e", "text": "#ffffff", "hud": "#ffd60a" },
+    "palette_variants": {
+      "sunset": { "primary": "#ff9f1c", "secondary": "#2ec4b6", "accent": "#e71d36" },
+      "arctic": { "primary": "#90e0ef", "secondary": "#0077b6", "accent": "#caf0f8" },
+      "candy": { "primary": "#ff70a6", "secondary": "#70d6ff", "accent": "#ffd670" },
+      "forest": { "primary": "#80ed99", "secondary": "#22577a", "accent": "#c7f9cc" }
+    },
+    "type": { "display": "Bangers", "body": "Inter", "hud": "Rubik Mono One" },
+    "size": { "caption_px": 72, "hud_px": 120, "title_px": 96, "min_text_px": 48 },
+    "space": { "slot_padding_px": 48 },
+    "radius": 0,
+    "stroke": { "caption_outline_px": 6 },
+    "motion": { "spawn_stagger_ms": 40, "spring_damping": 12, "camera_pullout_ms": 1200 },
+    "beat": { "pulse_scale": 1.04, "pulse_ms": 120 }
+  },
+  "components": [
+    { "id": "cubestory.VoxelStack", "kind": "scene3d", "loop_state": true, "props_schema": { "type": "object", "properties": { "count": { "type": "integer" }, "growth": { "enum": ["double", "add", "triple"] }, "arrangement": { "enum": ["tower", "pyramid", "grid", "spiral"] }, "color": { "type": "string" } } } },
+    { "id": "cubestory.ValueHUD", "kind": "counter", "props_schema": { "type": "object", "properties": { "from": { "type": "number" }, "to": { "type": "number" }, "format": { "enum": ["compact", "plain", "currency"] }, "unit": { "type": "string" } } } },
+    { "id": "cubestory.DayBadge", "kind": "text", "props_schema": { "type": "object", "properties": { "day": { "type": "integer" } } } },
+    { "id": "cubestory.HookTitle", "kind": "text", "props_schema": { "type": "object", "properties": { "text": { "type": "string" } } } },
+    { "id": "cubestory.Captions", "kind": "captions", "props_schema": { "type": "object", "properties": { "preset": { "enum": ["cube_pop_3word", "cube_karaoke"] } } } },
+    { "id": "cubestory.Ground", "kind": "scene3d", "props_schema": { "type": "object", "properties": { "grid": { "type": "boolean" } } } }
+  ],
+  "layouts_supported": ["full_bleed_3d_hud", "title_over_3d", "split_counter"],
+  "motion_presets": ["voxel_spawn_stagger", "number_roll", "camera_orbit", "camera_pullout", "beat_pulse", "loop_rewind"],
+  "caption_presets": ["cube_pop_3word", "cube_karaoke"],
+  "variation_axes": ["palette", "arrangement", "camera", "growth", "hud_format"],
+  "variation_values": {
+    "palette": ["default", "sunset", "arctic", "candy", "forest"],
+    "arrangement": ["tower", "pyramid", "grid", "spiral"],
+    "camera": ["orbit_slow", "pullout", "low_angle", "top_down"],
+    "growth": ["double", "add", "triple"],
+    "hud_format": ["compact", "plain", "currency"]
+  },
+  "render_cost": { "class": "H", "notes": "WebGL via @remotion/three; about 1080x1920 at 30 fps renders on a laptop GPU. Benchmark locally with render_cost_estimate; no timings were measured." },
+  "fonts": [
+    { "family": "Bangers", "license": "OFL", "source_url": "https://fonts.google.com/specimen/Bangers" },
+    { "family": "Inter", "license": "OFL", "source_url": "https://fonts.google.com/specimen/Inter" },
+    { "family": "Rubik Mono One", "license": "OFL", "source_url": "https://fonts.google.com/specimen/Rubik+Mono+One" }
+  ],
+  "examples": ["examples/episode_double_coins.spec.json"],
+  "status": "implemented"
+}

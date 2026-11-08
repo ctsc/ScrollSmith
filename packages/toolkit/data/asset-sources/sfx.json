@@ -1,0 +1,72 @@
+{
+  "kind": "sfx",
+  "rules": [
+    "Free to download does not mean safe to monetize: show the license summary and ask the user to confirm on the source page.",
+    "Music: a Content ID claim can still happen on YouTube even for royalty-free tracks; the YouTube Audio Library is the safest for YouTube.",
+    "The MCP never downloads assets; the user downloads into their own library folder and runs asset_library_index.",
+    "Record the license per file in the local library; unknown license blocks render_final (rule A1).",
+    "Every entry here is unverified until last_verified is set after a manual check."
+  ],
+  "sources": [
+    {
+      "name": "Freesound",
+      "url": "https://freesound.org/",
+      "kinds": [
+        "sfx"
+      ],
+      "license_summary": "Per-file Creative Commons licenses (CC0, CC BY, CC BY-NC); vary by file.",
+      "attribution_required": true,
+      "last_verified": null,
+      "verified": false,
+      "notes": "CC BY-NC files cannot be used in monetized videos. UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    },
+    {
+      "name": "Pixabay Sound Effects",
+      "url": "https://pixabay.com/sound-effects/",
+      "kinds": [
+        "sfx"
+      ],
+      "license_summary": "Pixabay Content License: free for commercial use, no attribution required.",
+      "attribution_required": false,
+      "last_verified": null,
+      "verified": false,
+      "notes": "UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    },
+    {
+      "name": "Mixkit Sound Effects",
+      "url": "https://mixkit.co/free-sound-effects/",
+      "kinds": [
+        "sfx"
+      ],
+      "license_summary": "Mixkit License: free for commercial use, no attribution.",
+      "attribution_required": false,
+      "last_verified": null,
+      "verified": false,
+      "notes": "UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    },
+    {
+      "name": "Zapsplat",
+      "url": "https://www.zapsplat.com/",
+      "kinds": [
+        "sfx"
+      ],
+      "license_summary": "Free tier requires attribution; paid Gold tier removes it.",
+      "attribution_required": true,
+      "last_verified": null,
+      "verified": false,
+      "notes": "UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    },
+    {
+      "name": "YouTube Audio Library (sound effects)",
+      "url": "https://studio.youtube.com/channel/UC/music",
+      "kinds": [
+        "sfx"
+      ],
+      "license_summary": "Free for use in YouTube videos.",
+      "attribution_required": false,
+      "last_verified": null,
+      "verified": false,
+      "notes": "UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    }
+  ]
+}

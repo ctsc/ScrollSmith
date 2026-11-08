@@ -1,0 +1,61 @@
+{
+  "kind": "video",
+  "rules": [
+    "Free to download does not mean safe to monetize: show the license summary and ask the user to confirm on the source page.",
+    "Music: a Content ID claim can still happen on YouTube even for royalty-free tracks; the YouTube Audio Library is the safest for YouTube.",
+    "The MCP never downloads assets; the user downloads into their own library folder and runs asset_library_index.",
+    "Record the license per file in the local library; unknown license blocks render_final (rule A1).",
+    "Every entry here is unverified until last_verified is set after a manual check."
+  ],
+  "sources": [
+    {
+      "name": "Pexels Videos",
+      "url": "https://www.pexels.com/videos/",
+      "kinds": [
+        "video",
+        "image"
+      ],
+      "license_summary": "Pexels License: free for commercial use, no attribution required, no selling unmodified copies.",
+      "attribution_required": false,
+      "last_verified": null,
+      "verified": false,
+      "notes": "UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    },
+    {
+      "name": "Pixabay Videos",
+      "url": "https://pixabay.com/videos/",
+      "kinds": [
+        "video"
+      ],
+      "license_summary": "Pixabay Content License.",
+      "attribution_required": false,
+      "last_verified": null,
+      "verified": false,
+      "notes": "UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    },
+    {
+      "name": "Coverr",
+      "url": "https://coverr.co/",
+      "kinds": [
+        "video"
+      ],
+      "license_summary": "Coverr License: free for commercial use, no attribution.",
+      "attribution_required": false,
+      "last_verified": null,
+      "verified": false,
+      "notes": "UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    },
+    {
+      "name": "Mixkit Videos",
+      "url": "https://mixkit.co/free-stock-video/",
+      "kinds": [
+        "video"
+      ],
+      "license_summary": "Mixkit License.",
+      "attribution_required": false,
+      "last_verified": null,
+      "verified": false,
+      "notes": "UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    }
+  ]
+}

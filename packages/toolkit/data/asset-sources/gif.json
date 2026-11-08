@@ -1,0 +1,36 @@
+{
+  "kind": "gif",
+  "rules": [
+    "Free to download does not mean safe to monetize: show the license summary and ask the user to confirm on the source page.",
+    "Music: a Content ID claim can still happen on YouTube even for royalty-free tracks; the YouTube Audio Library is the safest for YouTube.",
+    "The MCP never downloads assets; the user downloads into their own library folder and runs asset_library_index.",
+    "Record the license per file in the local library; unknown license blocks render_final (rule A1).",
+    "Every entry here is unverified until last_verified is set after a manual check."
+  ],
+  "sources": [
+    {
+      "name": "Giphy API",
+      "url": "https://developers.giphy.com/",
+      "kinds": [
+        "gif"
+      ],
+      "license_summary": "API terms require attribution and an API key; commercial video use terms not verified.",
+      "attribution_required": true,
+      "last_verified": null,
+      "verified": false,
+      "notes": "Prefer user-owned stickers. UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    },
+    {
+      "name": "Tenor API",
+      "url": "https://tenor.com/gifapi",
+      "kinds": [
+        "gif"
+      ],
+      "license_summary": "API terms require attribution and an API key; commercial video use terms not verified.",
+      "attribution_required": true,
+      "last_verified": null,
+      "verified": false,
+      "notes": "Prefer user-owned stickers. UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    }
+  ]
+}

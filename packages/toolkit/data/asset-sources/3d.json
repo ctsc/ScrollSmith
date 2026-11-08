@@ -1,0 +1,50 @@
+{
+  "kind": "3d",
+  "rules": [
+    "Free to download does not mean safe to monetize: show the license summary and ask the user to confirm on the source page.",
+    "Music: a Content ID claim can still happen on YouTube even for royalty-free tracks; the YouTube Audio Library is the safest for YouTube.",
+    "The MCP never downloads assets; the user downloads into their own library folder and runs asset_library_index.",
+    "Record the license per file in the local library; unknown license blocks render_final (rule A1).",
+    "Every entry here is unverified until last_verified is set after a manual check."
+  ],
+  "sources": [
+    {
+      "name": "Poly Pizza",
+      "url": "https://poly.pizza/",
+      "kinds": [
+        "3d"
+      ],
+      "license_summary": "Per-model CC licenses, mostly CC BY and CC0.",
+      "attribution_required": true,
+      "last_verified": null,
+      "verified": false,
+      "notes": "Check each model. UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    },
+    {
+      "name": "Kenney",
+      "url": "https://kenney.nl/assets",
+      "kinds": [
+        "3d",
+        "image",
+        "sfx"
+      ],
+      "license_summary": "CC0 game assets.",
+      "attribution_required": false,
+      "last_verified": null,
+      "verified": false,
+      "notes": "UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    },
+    {
+      "name": "Sketchfab (downloadable, CC)",
+      "url": "https://sketchfab.com/features/free-3d-models",
+      "kinds": [
+        "3d"
+      ],
+      "license_summary": "Per-model Creative Commons licenses.",
+      "attribution_required": true,
+      "last_verified": null,
+      "verified": false,
+      "notes": "Filter by downloadable and license. UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    }
+  ]
+}

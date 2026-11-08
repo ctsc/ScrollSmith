@@ -1,0 +1,62 @@
+{
+  "kind": "image",
+  "rules": [
+    "Free to download does not mean safe to monetize: show the license summary and ask the user to confirm on the source page.",
+    "Music: a Content ID claim can still happen on YouTube even for royalty-free tracks; the YouTube Audio Library is the safest for YouTube.",
+    "The MCP never downloads assets; the user downloads into their own library folder and runs asset_library_index.",
+    "Record the license per file in the local library; unknown license blocks render_final (rule A1).",
+    "Every entry here is unverified until last_verified is set after a manual check."
+  ],
+  "sources": [
+    {
+      "name": "Pexels",
+      "url": "https://www.pexels.com/",
+      "kinds": [
+        "image",
+        "video"
+      ],
+      "license_summary": "Pexels License.",
+      "attribution_required": false,
+      "last_verified": null,
+      "verified": false,
+      "notes": "UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    },
+    {
+      "name": "Pixabay",
+      "url": "https://pixabay.com/",
+      "kinds": [
+        "image"
+      ],
+      "license_summary": "Pixabay Content License.",
+      "attribution_required": false,
+      "last_verified": null,
+      "verified": false,
+      "notes": "UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    },
+    {
+      "name": "Unsplash",
+      "url": "https://unsplash.com/",
+      "kinds": [
+        "image"
+      ],
+      "license_summary": "Unsplash License: free for commercial use, no attribution required, no selling unmodified copies; Unsplash+ content is paid.",
+      "attribution_required": false,
+      "last_verified": null,
+      "verified": false,
+      "notes": "UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    },
+    {
+      "name": "Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/",
+      "kinds": [
+        "image",
+        "video"
+      ],
+      "license_summary": "Per-file: public domain, CC0, CC BY, CC BY-SA and others.",
+      "attribution_required": true,
+      "last_verified": null,
+      "verified": false,
+      "notes": "Check each file; CC BY-SA requires share-alike. UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "kind": "music",
+  "rules": [
+    "Free to download does not mean safe to monetize: show the license summary and ask the user to confirm on the source page.",
+    "Music: a Content ID claim can still happen on YouTube even for royalty-free tracks; the YouTube Audio Library is the safest for YouTube.",
+    "The MCP never downloads assets; the user downloads into their own library folder and runs asset_library_index.",
+    "Record the license per file in the local library; unknown license blocks render_final (rule A1).",
+    "Every entry here is unverified until last_verified is set after a manual check."
+  ],
+  "sources": [
+    {
+      "name": "YouTube Audio Library",
+      "url": "https://studio.youtube.com/channel/UC/music",
+      "kinds": [
+        "music",
+        "sfx"
+      ],
+      "license_summary": "Free for use in YouTube videos; some tracks require attribution per track page.",
+      "attribution_required": false,
+      "last_verified": null,
+      "verified": false,
+      "notes": "Safest choice for YouTube Shorts regarding Content ID. UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    },
+    {
+      "name": "Pixabay Music",
+      "url": "https://pixabay.com/music/",
+      "kinds": [
+        "music"
+      ],
+      "license_summary": "Pixabay Content License: free for commercial use, no attribution required, some restrictions on redistribution.",
+      "attribution_required": false,
+      "last_verified": null,
+      "verified": false,
+      "notes": "Content ID claims still possible on some tracks. UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    },
+    {
+      "name": "Free Music Archive",
+      "url": "https://freemusicarchive.org/",
+      "kinds": [
+        "music"
+      ],
+      "license_summary": "Per-track Creative Commons licenses; many require attribution and some are non-commercial.",
+      "attribution_required": true,
+      "last_verified": null,
+      "verified": false,
+      "notes": "Check the license on each track. UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    },
+    {
+      "name": "Incompetech (Kevin MacLeod)",
+      "url": "https://incompetech.com/music/",
+      "kinds": [
+        "music"
+      ],
+      "license_summary": "CC BY 4.0: free with attribution, or paid license without.",
+      "attribution_required": true,
+      "last_verified": null,
+      "verified": false,
+      "notes": "UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    },
+    {
+      "name": "Uppbeat",
+      "url": "https://uppbeat.io/",
+      "kinds": [
+        "music",
+        "sfx"
+      ],
+      "license_summary": "Free tier with a credit requirement and download limits; paid tier removes them.",
+      "attribution_required": true,
+      "last_verified": null,
+      "verified": false,
+      "notes": "UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    },
+    {
+      "name": "Mixkit",
+      "url": "https://mixkit.co/free-stock-music/",
+      "kinds": [
+        "music",
+        "sfx",
+        "video"
+      ],
+      "license_summary": "Mixkit License: free for commercial use, no attribution, with listed exclusions.",
+      "attribution_required": false,
+      "last_verified": null,
+      "verified": false,
+      "notes": "UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    }
+  ]
+}

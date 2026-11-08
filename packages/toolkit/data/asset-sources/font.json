@@ -1,0 +1,48 @@
+{
+  "kind": "font",
+  "rules": [
+    "Free to download does not mean safe to monetize: show the license summary and ask the user to confirm on the source page.",
+    "Music: a Content ID claim can still happen on YouTube even for royalty-free tracks; the YouTube Audio Library is the safest for YouTube.",
+    "The MCP never downloads assets; the user downloads into their own library folder and runs asset_library_index.",
+    "Record the license per file in the local library; unknown license blocks render_final (rule A1).",
+    "Every entry here is unverified until last_verified is set after a manual check."
+  ],
+  "sources": [
+    {
+      "name": "Google Fonts",
+      "url": "https://fonts.google.com/",
+      "kinds": [
+        "font"
+      ],
+      "license_summary": "Mostly SIL Open Font License (OFL); a few under Apache 2.0 or Ubuntu Font License. Free for commercial use and embedding.",
+      "attribution_required": false,
+      "last_verified": null,
+      "verified": false,
+      "notes": "Safe default for video text. UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    },
+    {
+      "name": "Fontshare",
+      "url": "https://www.fontshare.com/",
+      "kinds": [
+        "font"
+      ],
+      "license_summary": "Fontshare EULA: free for personal and commercial use with restrictions on redistribution.",
+      "attribution_required": false,
+      "last_verified": null,
+      "verified": false,
+      "notes": "UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    },
+    {
+      "name": "Font Squirrel",
+      "url": "https://www.fontsquirrel.com/",
+      "kinds": [
+        "font"
+      ],
+      "license_summary": "Per-font licenses; all listed as free for commercial use but terms differ.",
+      "attribution_required": false,
+      "last_verified": null,
+      "verified": false,
+      "notes": "Read the license file shipped with each font. UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    }
+  ]
+}

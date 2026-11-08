@@ -1,0 +1,50 @@
+{
+  "kind": "overlay",
+  "rules": [
+    "Free to download does not mean safe to monetize: show the license summary and ask the user to confirm on the source page.",
+    "Music: a Content ID claim can still happen on YouTube even for royalty-free tracks; the YouTube Audio Library is the safest for YouTube.",
+    "The MCP never downloads assets; the user downloads into their own library folder and runs asset_library_index.",
+    "Record the license per file in the local library; unknown license blocks render_final (rule A1).",
+    "Every entry here is unverified until last_verified is set after a manual check."
+  ],
+  "sources": [
+    {
+      "name": "Pixabay (green screen search)",
+      "url": "https://pixabay.com/videos/search/green%20screen/",
+      "kinds": [
+        "overlay",
+        "video"
+      ],
+      "license_summary": "Pixabay Content License.",
+      "attribution_required": false,
+      "last_verified": null,
+      "verified": false,
+      "notes": "UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    },
+    {
+      "name": "Pexels (green screen search)",
+      "url": "https://www.pexels.com/search/videos/green%20screen/",
+      "kinds": [
+        "overlay",
+        "video"
+      ],
+      "license_summary": "Pexels License.",
+      "attribution_required": false,
+      "last_verified": null,
+      "verified": false,
+      "notes": "UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    },
+    {
+      "name": "Mixkit overlays",
+      "url": "https://mixkit.co/free-stock-video/overlay/",
+      "kinds": [
+        "overlay"
+      ],
+      "license_summary": "Mixkit License.",
+      "attribution_required": false,
+      "last_verified": null,
+      "verified": false,
+      "notes": "User-made overlays are the safest. UNVERIFIED: terms taken from general knowledge, not checked against the site. Open the source page and confirm before use."
+    }
+  ]
+}

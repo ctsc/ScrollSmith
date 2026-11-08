@@ -1,0 +1,26 @@
+{
+  "name": "@scrollsmith/pack-cubestory",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cubestory style pack: Remotion + react-three-fiber components. Rendered locally by the user.",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts Main out/preview.mp4 --props=examples/episode_double_coins.spec.json --scale=0.5 --crf=28",
+    "render:final": "remotion render src/index.ts Main out/final.mp4 --props=examples/episode_double_coins.spec.json --crf=18"
+  },
+  "dependencies": {
+    "@react-three/fiber": "^8.17.0",
+    "@remotion/captions": "^4.0.300",
+    "@remotion/three": "^4.0.300",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.300",
+    "three": "^0.169.0"
+  },
+  "devDependencies": {
+    "@remotion/cli": "^4.0.300",
+    "@types/react": "^18.3.0",
+    "@types/three": "^0.169.0",
+    "typescript": "^5.6.0"
+  }
+}

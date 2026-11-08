@@ -98,8 +98,9 @@ export function createHandler(installKey?: string) {
   return createMcpHandler(() => buildServer(installKey));
 }
 
-/** Pulls the install key out of `/mcp/<key>`; undefined for the plain `/mcp` URL or a malformed key. */
-export function installKeyFromPath(pathname: string): string | undefined {
-  const key = pathname.match(/^\/(?:api\/)?mcp\/([^/]+)\/?$/)?.[1];
+/** Install key from `/mcp/<key>` (dev server, direct hits) or `?key=` (Vercel rewrite); undefined when absent or malformed. */
+export function installKeyFromUrl(url: string | URL): string | undefined {
+  const u = typeof url === "string" ? new URL(url, "http://localhost") : url;
+  const key = u.searchParams.get("key") ?? u.pathname.match(/^\/(?:api\/)?mcp\/([^/]+)\/?$/)?.[1];
   return key && INSTALL_KEY_RE.test(key) ? key : undefined;
 }

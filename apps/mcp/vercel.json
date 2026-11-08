@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     { "source": "/mcp", "destination": "/api/mcp" },
-    { "source": "/mcp/:key", "destination": "/api/mcp/:key" }
+    { "source": "/mcp/:key", "destination": "/api/mcp?key=:key" }
   ],
   "redirects": [{ "source": "/", "destination": "https://www.scroll-smith.com", "permanent": false }],
   "functions": { "api/mcp.ts": { "maxDuration": 30 } }

@@ -1,0 +1,400 @@
+{
+  "$comment": "Layout presets. Coordinates are normalized 0 to 1 on the frame (x, y, w, h). Slots are named and resolved by style packs. 9:16 is the canonical definition; other aspects list adaptations.",
+  "version": "2026-11-08",
+  "layouts": [
+    {
+      "id": "title_visual_caption",
+      "use": "Default explainer",
+      "slots": {
+        "top_title": [
+          0.08,
+          0.15,
+          0.74,
+          0.12
+        ],
+        "center_visual": [
+          0.06,
+          0.27,
+          0.76,
+          0.35
+        ],
+        "bottom_caption": [
+          0.08,
+          0.55,
+          0.74,
+          0.1
+        ]
+      },
+      "adapt": {
+        "1:1": "title 0.06 to 0.18, visual 0.18 to 0.78, caption 0.80 to 0.92",
+        "16:9": "title left third, visual right two-thirds, caption lower band"
+      }
+    },
+    {
+      "id": "full_bleed",
+      "use": "Cinematic 3D, satisfying",
+      "slots": {
+        "full_bleed": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "caption": [
+          0.08,
+          0.52,
+          0.74,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "hud_overlay",
+      "use": "cubestory, counters",
+      "slots": {
+        "full_bleed": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "hud_top": [
+          0.08,
+          0.16,
+          0.74,
+          0.06
+        ],
+        "hud_value": [
+          0.08,
+          0.22,
+          0.74,
+          0.1
+        ],
+        "caption": [
+          0.08,
+          0.55,
+          0.74,
+          0.09
+        ]
+      },
+      "adapt": {
+        "1:1": "HUD top-left",
+        "16:9": "HUD top-left"
+      }
+    },
+    {
+      "id": "split_vertical",
+      "use": "Gameplay or satisfying B-pane",
+      "slots": {
+        "top_pane": [
+          0,
+          0,
+          1,
+          0.5
+        ],
+        "bottom_pane": [
+          0,
+          0.5,
+          1,
+          0.5
+        ],
+        "caption": [
+          0.08,
+          0.46,
+          0.74,
+          0.08
+        ]
+      },
+      "adapt": {
+        "1:1": "side by side",
+        "16:9": "side by side"
+      }
+    },
+    {
+      "id": "versus",
+      "use": "Comparisons",
+      "slots": {
+        "left_card": [
+          0.06,
+          0.25,
+          0.36,
+          0.35
+        ],
+        "right_card": [
+          0.46,
+          0.25,
+          0.36,
+          0.35
+        ],
+        "vs_badge": [
+          0.42,
+          0.4,
+          0.16,
+          0.06
+        ],
+        "verdict": [
+          0.08,
+          0.6,
+          0.74,
+          0.06
+        ]
+      }
+    },
+    {
+      "id": "list_ranking",
+      "use": "Listicles, top N (max 5 visible)",
+      "slots": {
+        "header": [
+          0.08,
+          0.15,
+          0.74,
+          0.07
+        ],
+        "items": [
+          0.08,
+          0.22,
+          0.74,
+          0.42
+        ]
+      },
+      "adapt": {
+        "1:1": "2 columns",
+        "16:9": "2 columns"
+      }
+    },
+    {
+      "id": "tier_list",
+      "use": "Tier lists",
+      "slots": {
+        "rows": [
+          0.06,
+          0.18,
+          0.76,
+          0.46
+        ],
+        "incoming": [
+          0.06,
+          0.66,
+          0.76,
+          0.06
+        ]
+      },
+      "notes": "The incoming item band at 0.66 is outside the strict safe zone: animate it in from the right inside the safe zone instead of holding text there.",
+      "adapt": {
+        "1:1": "grid",
+        "16:9": "grid"
+      }
+    },
+    {
+      "id": "chat_ui",
+      "use": "Fake texts, DM stories (label as fiction)",
+      "slots": {
+        "header_bar": [
+          0.06,
+          0.15,
+          0.76,
+          0.05
+        ],
+        "bubbles": [
+          0.06,
+          0.2,
+          0.76,
+          0.44
+        ],
+        "typing": [
+          0.06,
+          0.6,
+          0.4,
+          0.04
+        ]
+      },
+      "adapt": {
+        "16:9": "phone mockup centered"
+      }
+    },
+    {
+      "id": "post_card",
+      "use": "Reddit or tweet stories",
+      "slots": {
+        "card": [
+          0.06,
+          0.18,
+          0.76,
+          0.32
+        ],
+        "caption": [
+          0.08,
+          0.52,
+          0.74,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "data_chart",
+      "use": "Bar race, line",
+      "slots": {
+        "title": [
+          0.08,
+          0.15,
+          0.74,
+          0.07
+        ],
+        "chart": [
+          0.06,
+          0.22,
+          0.76,
+          0.38
+        ],
+        "source": [
+          0.08,
+          0.6,
+          0.74,
+          0.04
+        ]
+      },
+      "adapt": {
+        "16:9": "wide chart"
+      }
+    },
+    {
+      "id": "map_focus",
+      "use": "History, geography",
+      "slots": {
+        "map": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "title_band": [
+          0.08,
+          0.15,
+          0.74,
+          0.07
+        ],
+        "label_pin": [
+          0.3,
+          0.35,
+          0.4,
+          0.08
+        ]
+      }
+    },
+    {
+      "id": "quote_card",
+      "use": "Stoic, motivation",
+      "slots": {
+        "quote": [
+          0.08,
+          0.3,
+          0.74,
+          0.25
+        ],
+        "attribution": [
+          0.08,
+          0.56,
+          0.74,
+          0.04
+        ]
+      }
+    },
+    {
+      "id": "pip_corner",
+      "use": "Reaction, source clip",
+      "slots": {
+        "main": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "pip": [
+          0.46,
+          0.2,
+          0.36,
+          0.15
+        ]
+      },
+      "adapt": {
+        "16:9": "bottom-right"
+      }
+    },
+    {
+      "id": "carousel_slide",
+      "use": "Image carousels (4:5 or 1:1 static)",
+      "slots": {
+        "title": [
+          0.08,
+          0.1,
+          0.74,
+          0.15
+        ],
+        "body": [
+          0.08,
+          0.3,
+          0.74,
+          0.5
+        ],
+        "footer": [
+          0.08,
+          0.85,
+          0.74,
+          0.08
+        ]
+      }
+    },
+    {
+      "id": "talking_head_full",
+      "use": "Talking-head edits",
+      "slots": {
+        "source_video": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "caption": [
+          0.08,
+          0.55,
+          0.74,
+          0.09
+        ],
+        "lower_third": [
+          0.08,
+          0.62,
+          0.7,
+          0.08
+        ]
+      },
+      "notes": "Caption shifts within universal_relaxed to avoid the face bbox (rule F4)."
+    },
+    {
+      "id": "screen_demo",
+      "use": "Product demos",
+      "slots": {
+        "screen_recording": [
+          0.06,
+          0.2,
+          0.76,
+          0.4
+        ],
+        "cursor_zoom": [
+          0.2,
+          0.25,
+          0.6,
+          0.3
+        ],
+        "caption": [
+          0.08,
+          0.6,
+          0.74,
+          0.06
+        ]
+      },
+      "adapt": {
+        "16:9": "wide"
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "beats.v1",
+  "title": "Beat grid",
+  "type": "object",
+  "required": ["bpm", "beats_ms"],
+  "properties": {
+    "bpm": {"type": "number"},
+    "beats_ms": {"type": "array", "items": {"type": "integer"}},
+    "downbeats_ms": {"type": "array", "items": {"type": "integer"}},
+    "beats_per_bar": {"type": "integer", "default": 4},
+    "duration_ms": {"type": "integer"},
+    "method": {"type": "string"}
+  }
+}

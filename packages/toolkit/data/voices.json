@@ -1,0 +1,10 @@
+{
+  "$comment": "Voice catalog with calibrated words per second. wps starts at 2.5 as a placeholder until duration_estimate updates it from real tts_generate outputs (exponential moving average).",
+  "version": "2026-11-08",
+  "default_wps": 2.5,
+  "voices": [
+    {"voice_id": "local_default", "provider": "local", "notes": "Local TTS (Kokoro or Piper; verify license before use). Free fallback.", "wps": 2.5, "calibrated": false},
+    {"voice_id": "elevenlabs_default", "provider": "elevenlabs", "notes": "Uses the user's own ELEVENLABS_API_KEY. Model Multilingual v2 or Flash v2.5.", "wps": 2.5, "calibrated": false},
+    {"voice_id": "openai_alloy", "provider": "openai", "notes": "Uses the user's own OPENAI_API_KEY.", "wps": 2.5, "calibrated": false}
+  ]
+}

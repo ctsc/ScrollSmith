@@ -1,0 +1,16 @@
+{
+  "source_id": "src1", "path": "footage/take1.mp4", "duration_ms": 10000, "local_only": true,
+  "streams": {"width": 1920, "height": 1080, "fps": 30, "audio_channels": 2, "lufs": -18.2},
+  "words": [
+    {"text": " Welcome", "startMs": 200, "endMs": 650}, {"text": " back", "startMs": 660, "endMs": 900},
+    {"text": " um", "startMs": 1200, "endMs": 1400}, {"text": " today", "startMs": 2000, "endMs": 2400},
+    {"text": " we", "startMs": 2410, "endMs": 2500}, {"text": " ship", "startMs": 2510, "endMs": 2900},
+    {"text": " three", "startMs": 3000, "endMs": 3400}, {"text": " features", "startMs": 3410, "endMs": 4000}
+  ],
+  "silences": [{"startMs": 900, "endMs": 1200}, {"startMs": 1400, "endMs": 2000}, {"startMs": 4000, "endMs": 10000}],
+  "fillers": [{"text": " um", "startMs": 1200, "endMs": 1400}],
+  "shots": [{"startMs": 0, "endMs": 10000}],
+  "sentences": [{"startMs": 200, "endMs": 900}, {"startMs": 2000, "endMs": 4000}],
+  "faces": [{"track_id": "f1", "samples": [{"t_ms": 0, "bbox_norm": [0.35, 0.2, 0.3, 0.3]}, {"t_ms": 2000, "bbox_norm": [0.35, 0.2, 0.3, 0.3]}, {"t_ms": 4000, "bbox_norm": [0.35, 0.2, 0.3, 0.3]}]}],
+  "emphasis_candidates": [{"word_index": 6, "score": 2.1, "reason": "number"}]
+}

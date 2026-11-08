@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "captions.v1",
+  "title": "Caption pages",
+  "type": "object",
+  "required": ["preset", "pages"],
+  "properties": {
+    "preset": {"type": "string"},
+    "max_words_per_page": {"type": "integer"},
+    "pages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["startMs", "endMs", "tokens"],
+        "properties": {
+          "startMs": {"type": "integer"},
+          "endMs": {"type": "integer"},
+          "text": {"type": "string"},
+          "overflow": {"type": "boolean"},
+          "tokens": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["text", "fromMs", "toMs"],
+              "properties": {
+                "text": {"type": "string"},
+                "fromMs": {"type": "integer"},
+                "toMs": {"type": "integer"},
+                "emphasis": {"type": "boolean"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "edit_decision.v1",
+  "title": "Editing decision registry entry",
+  "description": "A decision is data: a detector (how to find the moment) plus an effect (what to do) plus parameters plus applicability.",
+  "type": "object",
+  "required": ["id", "category", "name", "detector", "effect", "params", "applies_to"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z_]+\\.[a-z0-9_]+$", "description": "e.g. zoom_framing.punch_on_emphasis_word"},
+    "category": {"enum": ["cut_pacing", "zoom_framing", "captions", "broll_overlay", "audio_voice", "music", "sfx", "transitions", "color_look", "brand_graphics", "hook_structure", "format_specific", "export_platform"]},
+    "name": {"type": "string"},
+    "detector": {
+      "type": "object",
+      "required": ["kind"],
+      "properties": {
+        "kind": {"enum": ["silence", "filler_word", "emphasis_word", "sentence_boundary", "topic_change", "scene_cut", "face_present", "beat", "keyword", "time_range", "always"]},
+        "args": {"type": "object"}
+      }
+    },
+    "effect": {
+      "type": "object",
+      "required": ["op"],
+      "properties": {
+        "op": {"enum": ["cut", "crossfade", "zoom", "crop_path", "overlay", "caption_style", "sfx", "music", "speed", "color", "layer_add", "reorder", "export_setting"]},
+        "args": {"type": "object"}
+      }
+    },
+    "params": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["type", "default"],
+        "properties": {
+          "type": {"enum": ["number", "integer", "boolean", "string", "enum", "string[]"]},
+          "default": {},
+          "min": {"type": "number"},
+          "max": {"type": "number"},
+          "values": {"type": "array"},
+          "description": {"type": "string"}
+        }
+      }
+    },
+    "applies_to": {"type": "array", "minItems": 1, "items": {"enum": ["talking_head", "faceless", "ad_ugc", "screen_demo", "podcast_clip", "long_form"]}},
+    "conflicts_with": {"type": "array", "items": {"type": "string"}},
+    "requires": {"type": "array", "items": {"type": "string"}},
+    "source": {"enum": ["house", "extracted_from_reference", "user"]},
+    "rationale": {"type": "string"},
+    "default_on": {"type": "boolean", "description": "Whether a style with no opinion should enable this decision"}
+  }
+}

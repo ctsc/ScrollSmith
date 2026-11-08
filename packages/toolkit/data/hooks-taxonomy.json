@@ -1,0 +1,23 @@
+{
+  "$comment": "Templates are paraphrased patterns, not measured performance. hook_library_search returns a pattern plus a paraphrase, never a creator's text for verbatim reuse.",
+  "version": "2026-11-08",
+  "types": [
+    {"id": "curiosity_gap", "template": "What happens if you [X] every day for [N] days?", "fits": ["what_if", "cubestory"], "visual_hint": "Show the starting state and a hidden end state"},
+    {"id": "shock_number", "template": "[Big number] [unit]. That's [relatable comparison].", "fits": ["data", "finance"], "visual_hint": "Number slams in at frame 0"},
+    {"id": "contrarian", "template": "Everyone says [belief]. It's wrong.", "fits": ["explainers"], "visual_hint": "Strike through the belief text"},
+    {"id": "direct_question", "template": "Would you rather [A] or [B]?", "fits": ["quizzes"], "visual_hint": "Two cards, versus layout"},
+    {"id": "stakes", "template": "You have [time] to [task] or [consequence].", "fits": ["stories"], "visual_hint": "Countdown element"},
+    {"id": "list_promise", "template": "[N] [things] that [benefit], number [N] is [tease].", "fits": ["listicles"], "visual_hint": "Numbered header with the last item blurred"},
+    {"id": "in_media_res", "template": "Start at the climax, then: Let me back up.", "fits": ["storytime"], "visual_hint": "Open on the most dramatic frame"},
+    {"id": "visual_pattern_interrupt", "template": "No words; an impossible visual in frame 1.", "fits": ["satisfying", "3d"], "visual_hint": "Physically impossible motion or scale"},
+    {"id": "pov", "template": "POV: you just [situation].", "fits": ["chat_stories"], "visual_hint": "First-person framing"},
+    {"id": "challenge", "template": "Bet you can't [task] before this ends.", "fits": ["quizzes", "loops"], "visual_hint": "Progress bar or timer"}
+  ],
+  "grading_rubric": {
+    "clarity": "One idea, understood on first hearing",
+    "specificity": "Concrete nouns and numbers, no vague promise",
+    "curiosity": "Opens a loop the payoff closes",
+    "visual_support": "A frame-0 visual that carries the hook without sound",
+    "time_to_proposition": "Proposition is clear within 3 s (TikTok creative best practices, ads context)"
+  }
+}

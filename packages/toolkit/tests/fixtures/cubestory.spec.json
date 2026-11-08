@@ -1,0 +1,31 @@
+{
+  "spec_version": "1.0",
+  "meta": {"project_id": "demo", "episode_id": "ep001", "title": "What if you got 2x coins every day", "seed": 42, "format_type": "faceless", "local_only": true, "niche": "what_if"},
+  "format": {"aspect": "9:16", "width": 1080, "height": 1920, "fps": 30, "duration_ms": 12000, "platforms": ["tiktok", "shorts"], "safe_zone_preset": "universal_strict", "loop": {"enabled": false}},
+  "style": {"pack_id": "cubestory", "pack_version": "1.0.0", "variation": {"palette_variant": "sunset", "camera_variant": "orbit_slow"}},
+  "audio": {"voiceover": {"asset_id": "vo_ep001", "voice_id": "local_default"}, "music": {"asset_id": "music_01", "bpm": 128, "duck_db": -12}, "target_lufs": -14, "true_peak_db": -1},
+  "captions": {"preset": "cube_pop_3word", "mode": "burn_in", "max_words_per_page": 3, "emphasis": "numbers"},
+  "timeline": [
+    {"id": "r01", "start_ms": 0, "end_ms": 2500, "beat": "hook", "retention_purpose": "Open the doubling loop", "narration": "Double your coins every day?", "on_screen_text": [{"text": "2X EVERY DAY", "role": "title", "slot": "hud_top"}], "layout": "hud_overlay",
+     "layers": [{"id": "world", "kind": "scene3d", "slot": "full_bleed", "z": 0, "component": "cubestory.VoxelStack", "props": {"count": 1, "growth": "double"}, "animations": [{"primitive": "voxel_spawn_stagger", "start_ms": 0, "duration_ms": 800}]},
+                {"id": "title", "kind": "text", "slot": "hud_top", "z": 10, "component": "cubestory.HudLabel", "text": "2X EVERY DAY", "font_px": 80}],
+     "camera": {"move": "push_in", "easing": "spring_soft", "intensity": 0.4}, "caption_state": "on", "music_cue": "build"},
+    {"id": "r02", "start_ms": 2500, "end_ms": 6000, "beat": "escalation", "retention_purpose": "Visible doubling creates a curiosity gap about the final value", "narration": "Day two, two. Day five, thirty-two.", "on_screen_text": [{"text": "DAY 5", "role": "label", "slot": "hud_top"}, {"text": "32", "role": "value", "slot": "hud_value"}], "layout": "hud_overlay",
+     "layers": [{"id": "world", "kind": "scene3d", "slot": "full_bleed", "z": 0, "component": "cubestory.VoxelStack", "props": {"count": 32, "growth": "double"}, "animations": [{"primitive": "voxel_spawn_stagger", "start_ms": 2500, "duration_ms": 2000, "params": {"stagger_ms": 40}}]},
+                {"id": "hud", "kind": "counter", "slot": "hud_value", "z": 10, "component": "cubestory.ValueHUD", "animations": [{"primitive": "number_roll", "start_ms": 2500, "duration_ms": 2500, "params": {"from": 2, "to": 32, "format": "compact"}}]}],
+     "camera": {"move": "pull_out", "easing": "spring_soft", "intensity": 0.6}, "sfx": [{"asset_id": "sfx_pop", "at_ms": 0, "gain_db": -6, "sync": "beat"}], "music_cue": "build", "caption_state": "on", "beat_sync": {"snap_cuts_to": "beat", "pulse_on": "downbeat"}},
+    {"id": "r03", "start_ms": 6000, "end_ms": 9500, "beat": "payoff", "retention_purpose": "Deliver the number", "narration": "Day thirty: over five hundred million.", "on_screen_text": [{"text": "DAY 30", "role": "label", "slot": "hud_top"}, {"text": "536M", "role": "value", "slot": "hud_value"}], "layout": "hud_overlay",
+     "layers": [{"id": "world", "kind": "scene3d", "slot": "full_bleed", "z": 0, "component": "cubestory.VoxelStack", "props": {"count": 4096, "growth": "double"}, "animations": [{"primitive": "voxel_spawn_stagger", "start_ms": 6000, "duration_ms": 3000}]},
+                {"id": "hud", "kind": "counter", "slot": "hud_value", "z": 10, "component": "cubestory.ValueHUD", "animations": [{"primitive": "number_roll", "start_ms": 6000, "duration_ms": 3000, "params": {"from": 32, "to": 536870912, "format": "compact", "curve": "exponential"}}]}],
+     "camera": {"move": "orbit", "easing": "ease_out_expo", "intensity": 0.8}, "music_cue": "drop", "caption_state": "emphasis"},
+    {"id": "r04", "start_ms": 9500, "end_ms": 12000, "beat": "cta", "retention_purpose": "Ask for the next number", "narration": "Comment a number for tomorrow.", "on_screen_text": [{"text": "COMMENT A NUMBER", "role": "callout", "slot": "hud_top"}], "layout": "hud_overlay",
+     "layers": [{"id": "world", "kind": "scene3d", "slot": "full_bleed", "z": 0, "component": "cubestory.VoxelStack", "props": {"count": 4096, "growth": "double"}, "animations": [{"primitive": "float_bob", "start_ms": 9500, "duration_ms": 2500}]},
+                {"id": "cta", "kind": "text", "slot": "hud_top", "z": 10, "component": "cubestory.HudLabel", "text": "COMMENT A NUMBER", "font_px": 64}],
+     "camera": {"move": "static"}, "music_cue": "cut", "caption_state": "on"}
+  ],
+  "assets": [
+    {"asset_id": "vo_ep001", "type": "audio", "path": "audio/ep001.wav", "license": {"source": "tts", "license_id": "owned", "commercial_ok": true, "content_id_risk": "none"}, "ai_generated": true},
+    {"asset_id": "music_01", "type": "music", "path": "assets/music/track01.mp3", "license": {"source": "YouTube Audio Library", "license_id": "yt-audio-library", "commercial_ok": true, "content_id_risk": "none"}},
+    {"asset_id": "sfx_pop", "type": "sfx", "path": "assets/sfx/pop.wav", "license": {"source": "Pixabay", "license_id": "pixabay-content", "commercial_ok": true, "content_id_risk": "none"}}
+  ]
+}

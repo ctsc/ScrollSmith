@@ -5,6 +5,7 @@ type McpEvent = {
   tool?: string;
   protocol_version?: string;
   install_key?: string;
+  skill?: string;
 };
 
 /** Fire-and-forget insert into Supabase `mcp_events`. No-op when env vars are missing. */

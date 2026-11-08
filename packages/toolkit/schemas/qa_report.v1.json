@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "qa_report.v1",
+  "title": "QA report",
+  "type": "object",
+  "required": ["pass", "issues", "metrics"],
+  "properties": {
+    "pass": {"type": "boolean"},
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "at_ms", "severity", "fix_hint"],
+        "properties": {
+          "code": {"enum": ["BLACK_FRAMES", "FREEZE", "AUDIO_CLIP", "LOUDNESS_OFF", "TEXT_UNSAFE", "CAPTION_OVERFLOW", "CAPTION_DRIFT", "LOOP_SEAM", "SILENCE_GAP", "FACE_UNSAFE", "CAPTION_OVER_FACE", "CUT_IN_WORD", "NO_CROSSFADE", "SPEAKER_LOUDNESS"]},
+          "at_ms": {"type": "integer"},
+          "severity": {"enum": ["error", "warn"]},
+          "fix_hint": {"type": "string"}
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "integrated_lufs": {"type": ["number", "null"]},
+        "true_peak_db": {"type": ["number", "null"]},
+        "max_caption_drift_ms": {"type": ["number", "null"]},
+        "loop_ssim": {"type": ["number", "null"]}
+      }
+    }
+  }
+}

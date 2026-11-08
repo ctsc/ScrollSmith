@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "brand_kit.v1",
+  "title": "Brand kit",
+  "type": "object",
+  "required": ["brand_kit_id", "name"],
+  "properties": {
+    "brand_kit_id": {"type": "string"},
+    "name": {"type": "string"},
+    "colors": {
+      "type": "object",
+      "properties": {
+        "primary": {"type": "string"},
+        "secondary": {"type": "string"},
+        "accent": {"type": "string"},
+        "text": {"type": "string"},
+        "bg": {"type": "string"}
+      }
+    },
+    "fonts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["role", "family"],
+        "properties": {
+          "role": {"enum": ["display", "body", "caption"]},
+          "family": {"type": "string"},
+          "files": {"type": "array", "items": {"type": "string"}},
+          "license": {"type": "string"}
+        }
+      }
+    },
+    "logos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["asset_id", "variant"],
+        "properties": {
+          "asset_id": {"type": "string"},
+          "variant": {"enum": ["light", "dark", "mark_only"]},
+          "min_px": {"type": "integer"}
+        }
+      }
+    },
+    "lower_third": {
+      "type": "object",
+      "properties": {
+        "component": {"type": "string"},
+        "name": {"type": "string"},
+        "title": {"type": "string"},
+        "show_at": {"enum": ["first_appearance", "manual"]},
+        "duration_ms": {"type": "integer"}
+      }
+    },
+    "intro": {
+      "type": "object",
+      "properties": {"asset_id": {"type": "string"}, "max_ms": {"type": "integer", "default": 1500}}
+    },
+    "outro": {
+      "type": "object",
+      "properties": {"asset_id": {"type": "string"}, "cta_text": {"type": "string"}, "handle": {"type": "string"}}
+    },
+    "caption_preset": {"type": "string"},
+    "voice": {
+      "type": "object",
+      "properties": {
+        "tone_profile_id": {"type": "string"},
+        "banned_words": {"type": "array", "items": {"type": "string"}},
+        "reading_level": {"type": "string"}
+      }
+    },
+    "music_policy": {
+      "type": "object",
+      "properties": {
+        "allowed_moods": {"type": "array", "items": {"type": "string"}},
+        "lufs_rel_voice_db": {"type": "number", "default": -18}
+      }
+    },
+    "disclosure_defaults": {"type": "object"}
+  }
+}

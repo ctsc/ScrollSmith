@@ -1,0 +1,26 @@
+{
+  "$comment": "Versioned, date-stamped platform policies used by policy_check and the validator. Status per entry: VERIFIED (read on an official page), SECONDARY, UNVERIFIED. Policies change: re-verify before relying on them.",
+  "version": "2026-11-08",
+  "rules": [
+    {"id": "tiktok_hook_3s", "platform": "tiktok", "text": "Put the hook in the first 6 s; introduce the proposition in the first 3 s.", "status": "VERIFIED", "context": "ads", "source": "TikTok Ads Help Center creative best practices"},
+    {"id": "tiktok_music_120bpm", "platform": "tiktok", "text": "Tracks above 120 BPM are recommended for higher view-through rate.", "status": "VERIFIED", "context": "ads", "source": "TikTok for Business"},
+    {"id": "tiktok_ai_label", "platform": "tiktok", "text": "Realistic AI-generated content must be labeled; TikTok reads C2PA Content Credentials and auto-labels; auto labels cannot be removed.", "status": "VERIFIED", "source": "TikTok Newsroom"},
+    {"id": "shorts_length", "platform": "shorts", "text": "Square or vertical videos up to 3 min count as Shorts (uploads from Oct 15, 2024).", "status": "VERIFIED", "source": "YouTube Help"},
+    {"id": "shorts_music_library", "platform": "shorts", "text": "YouTube Audio Library tracks do not receive Content ID claims; Shorts Audio Library music may cover up to 90 s of a 3 min Short.", "status": "VERIFIED", "source": "YouTube Help"},
+    {"id": "shorts_content_id_block", "platform": "shorts", "text": "1 to 3 min Shorts with an active Content ID claim were blocked; a reported change effective Sept 24, 2026 says they may remain playable.", "status": "SECONDARY", "source": "YouTube Help (UK) via secondary report"},
+    {"id": "youtube_inauthentic", "platform": "youtube", "text": "Monetization policy covers repetitive or mass-produced (inauthentic) content; renamed July 15, 2025. A further July 2026 rename is reported but unverified.", "status": "VERIFIED", "source": "YouTube statement via Search Engine Journal"},
+    {"id": "reels_length", "platform": "reels", "text": "Reels up to 3 min are eligible for recommendation (Jan 2025).", "status": "VERIFIED", "source": "Instagram creators blog"},
+    {"id": "instagram_originality", "platform": "reels", "text": "Only the original of identical content is recommended; aggregators are removed from recommendations; visible third-party watermarks reduce recommendation.", "status": "VERIFIED", "source": "Instagram announcement via TechCrunch; Instagram creators blog"},
+    {"id": "instagram_repost_threshold", "platform": "reels", "text": "Accounts repeatedly posting others' content they did not create or materially enhance (10 or more times in 30 days per the Apr 30, 2024 announcement) are not shown in recommendations; a 2026 update reportedly uses 'primarily' instead of a number.", "status": "SECONDARY", "source": "Instagram announcement; 2026 update via secondary report"},
+    {"id": "do_not_cite", "platform": "all", "text": "Do not use: '71% decide in 3 s', 'algorithm decides at 1.5 s', '2.5 s clip length = 35% higher completion'. No primary source found.", "status": "UNVERIFIED"}
+  ],
+  "policy_check_flags": {
+    "ai_label_required": "meta.ai_disclosure == realistic_ai or any asset with ai_generated and realistic output",
+    "music_risk": "music asset content_id_risk is high or unknown; Shorts over 60 s with non YouTube Audio Library music",
+    "reused_content_risk": "sources that are third-party footage or background_footage not owned or licensed",
+    "third_party_watermark": "OCR finds another platform's watermark or handle on sampled frames",
+    "voice_consent": "voiceover.cloned_or_changed is true and meta.voice_consent is not true",
+    "claims": "script.claims with status unverified or false",
+    "endorsement_implication": "overlay of a real person or logo next to a product claim"
+  }
+}

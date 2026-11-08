@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "asset_library.v1",
+  "title": "Local asset library index",
+  "description": "Index of the user's own folders. Stored locally only. license defaults to unknown, which blocks final render.",
+  "type": "object",
+  "required": ["items"],
+  "properties": {
+    "indexed_at": {"type": "string"},
+    "folders": {"type": "array", "items": {"type": "string"}},
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "path", "kind", "license"],
+        "properties": {
+          "id": {"type": "string"},
+          "path": {"type": "string"},
+          "kind": {"enum": ["music", "sfx", "font", "image", "video", "green_screen", "overlay", "lottie", "gif", "model3d"]},
+          "sha256": {"type": "string"},
+          "duration_ms": {"type": "integer"},
+          "bpm": {"type": "number"},
+          "onsets_ms": {"type": "array", "items": {"type": "integer"}},
+          "loudness_lufs": {"type": "number"},
+          "tags": {"type": "array", "items": {"type": "string"}},
+          "mood": {"type": "array", "items": {"type": "string"}},
+          "license": {
+            "type": "object",
+            "required": ["license_id", "commercial_ok"],
+            "properties": {
+              "source": {"type": "string"},
+              "license_id": {"type": "string", "description": "e.g. CC0, CC-BY-4.0, OFL-1.1, owned, unknown"},
+              "attribution": {"type": "string"},
+              "commercial_ok": {"type": ["boolean", "null"]},
+              "content_id_risk": {"enum": ["none", "low", "high", "unknown"]}
+            }
+          }
+        }
+      }
+    }
+  }
+}

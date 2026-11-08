@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "style_pack.v1",
+  "title": "Style pack manifest",
+  "type": "object",
+  "required": ["pack_id", "version", "engine", "scope", "tokens", "components", "layouts_supported"],
+  "properties": {
+    "pack_id": {"type": "string"},
+    "name": {"type": "string"},
+    "version": {"type": "string"},
+    "description": {"type": "string"},
+    "engine": {"enum": ["remotion", "hyperframes"]},
+    "engine_features": {"type": "array", "items": {"type": "string"}},
+    "scope": {
+      "type": "object",
+      "properties": {
+        "faceless": {"type": "boolean"},
+        "footage": {"type": "boolean"},
+        "aspects": {"type": "array", "items": {"enum": ["9:16", "1:1", "4:5", "16:9"]}}
+      }
+    },
+    "tokens": {
+      "type": "object",
+      "properties": {
+        "color": {"type": "object"},
+        "palette_variants": {"type": "object"},
+        "type": {"type": "object"},
+        "size": {"type": "object"},
+        "space": {"type": "object"},
+        "radius": {"type": "number"},
+        "stroke": {"type": "object"},
+        "motion": {"type": "object"},
+        "beat": {"type": "object"}
+      }
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id"],
+        "properties": {
+          "id": {"type": "string"},
+          "kind": {"type": "string"},
+          "props_schema": {"type": "object"},
+          "loop_state": {"type": "boolean", "description": "Exposes getLoopState(frame) for loop_seal state_match"}
+        }
+      }
+    },
+    "layouts_supported": {"type": "array", "items": {"type": "string"}},
+    "motion_presets": {"type": "array", "items": {"type": "string"}},
+    "caption_presets": {"type": "array", "items": {"type": "string"}},
+    "variation_axes": {"type": "array", "items": {"type": "string"}},
+    "variation_values": {"type": "object", "additionalProperties": {"type": "array", "items": {"type": "string"}}},
+    "render_cost": {
+      "type": "object",
+      "properties": {"class": {"enum": ["L", "M", "H", "gpu_heavy"]}, "notes": {"type": "string"}}
+    },
+    "fonts": {
+      "type": "array",
+      "items": {"type": "object", "required": ["family", "license"], "properties": {"family": {"type": "string"}, "license": {"type": "string"}, "source_url": {"type": "string"}}}
+    },
+    "examples": {"type": "array", "items": {"type": "string"}},
+    "status": {"enum": ["implemented", "manifest_only"], "description": "manifest_only packs ship tokens and component contracts but no component code yet"}
+  }
+}

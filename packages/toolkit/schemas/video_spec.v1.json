@@ -1,0 +1,263 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "video_spec.v1",
+  "title": "Video spec (per-second scene plan)",
+  "description": "One contract for faceless videos and footage edits. Faceless videos fill layers with generated components; footage edits also fill sources and per-range source_* fields.",
+  "type": "object",
+  "required": ["spec_version", "meta", "format", "style", "audio", "timeline"],
+  "properties": {
+    "spec_version": {"const": "1.0"},
+    "meta": {
+      "type": "object",
+      "required": ["project_id", "title", "seed"],
+      "properties": {
+        "project_id": {"type": "string"},
+        "episode_id": {"type": "string"},
+        "title": {"type": "string"},
+        "niche": {"type": "string"},
+        "series_id": {"type": "string"},
+        "seed": {"type": "integer"},
+        "language": {"type": "string", "default": "en"},
+        "variant_of": {"type": "string"},
+        "format_type": {"enum": ["faceless", "talking_head", "ad_ugc", "screen_demo", "podcast_clip", "long_form"]},
+        "brand_kit_id": {"type": "string"},
+        "edit_style_id": {"type": "string"},
+        "ai_disclosure": {"enum": ["none", "ai_assisted", "realistic_ai"]},
+        "local_only": {"const": true},
+        "hook_first": {"type": "boolean"},
+        "cta_policy": {"enum": ["default", "early"]},
+        "voice_consent": {"type": "boolean", "description": "Required true when a cloned or changed voice is used (rule F7)"}
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_id", "path"],
+        "properties": {
+          "source_id": {"type": "string"},
+          "path": {"type": "string"},
+          "footage_index_path": {"type": "string"}
+        }
+      }
+    },
+    "format": {
+      "type": "object",
+      "required": ["aspect", "width", "height", "fps", "duration_ms", "platforms"],
+      "properties": {
+        "aspect": {"enum": ["9:16", "1:1", "4:5", "16:9"]},
+        "width": {"type": "integer"},
+        "height": {"type": "integer"},
+        "fps": {"enum": [24, 25, 30, 60]},
+        "duration_ms": {"type": "integer"},
+        "platforms": {"type": "array", "items": {"enum": ["tiktok", "reels", "shorts", "youtube", "x", "linkedin"]}},
+        "safe_zone_preset": {"type": "string", "default": "universal_strict"},
+        "loop": {
+          "type": "object",
+          "properties": {
+            "enabled": {"type": "boolean"},
+            "seam_ms": {"type": "integer"},
+            "strategy": {"enum": ["state_match", "crossfade", "rewind", "match_cut"]}
+          }
+        }
+      }
+    },
+    "style": {
+      "type": "object",
+      "required": ["pack_id", "pack_version"],
+      "properties": {
+        "pack_id": {"type": "string"},
+        "pack_version": {"type": "string"},
+        "token_overrides": {"type": "object"},
+        "variation": {
+          "type": "object",
+          "properties": {
+            "palette_variant": {"type": "string"},
+            "camera_variant": {"type": "string"},
+            "motion_intensity": {"type": "number"}
+          },
+          "additionalProperties": true
+        }
+      }
+    },
+    "audio": {
+      "type": "object",
+      "properties": {
+        "voiceover": {
+          "type": "object",
+          "properties": {
+            "asset_id": {"type": "string"},
+            "voice_id": {"type": "string"},
+            "words_path": {"type": "string"},
+            "cloned_or_changed": {"type": "boolean"}
+          }
+        },
+        "music": {
+          "type": "object",
+          "properties": {
+            "asset_id": {"type": "string"},
+            "bpm": {"type": "number"},
+            "beats_path": {"type": "string"},
+            "offset_ms": {"type": "integer"},
+            "duck_db": {"type": "number", "default": -12}
+          }
+        },
+        "target_lufs": {"type": "number", "default": -14},
+        "true_peak_db": {"type": "number", "default": -1}
+      }
+    },
+    "captions": {
+      "type": "object",
+      "properties": {
+        "preset": {"type": "string"},
+        "mode": {"enum": ["burn_in", "sidecar", "both"]},
+        "max_words_per_page": {"type": "integer", "default": 3},
+        "emphasis": {"enum": ["none", "keywords", "numbers", "keywords_and_numbers"]},
+        "emoji": {"type": "boolean", "default": false},
+        "face_avoid": {"type": "boolean", "default": true}
+      }
+    },
+    "timeline": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/range"}},
+    "assets": {"type": "array", "items": {"$ref": "#/$defs/asset_ref"}},
+    "decision_log": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "decision_id": {"type": "string"},
+          "range_id": {"type": "string"},
+          "params": {"type": "object"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "range": {
+      "type": "object",
+      "required": ["id", "start_ms", "end_ms", "beat", "layout", "layers"],
+      "properties": {
+        "id": {"type": "string"},
+        "start_ms": {"type": "integer", "minimum": 0},
+        "end_ms": {"type": "integer", "minimum": 0},
+        "beat": {"enum": ["hook", "context", "escalation", "payoff", "twist", "proof", "cta", "loop_bridge", "problem", "demo", "testimonial", "offer"]},
+        "retention_purpose": {"type": "string", "description": "Why a viewer keeps watching here, e.g. open loop: what happens at day 30"},
+        "narration": {"type": "string"},
+        "narration_est_ms": {"type": "integer", "description": "Estimated or measured narration duration for rule T4"},
+        "on_screen_text": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["text"],
+            "properties": {
+              "text": {"type": "string"},
+              "role": {"enum": ["title", "label", "value", "callout", "list_item"]},
+              "slot": {"type": "string"}
+            }
+          }
+        },
+        "layout": {"type": "string", "description": "Layout preset id from layouts://index"},
+        "layers": {"type": "array", "items": {"$ref": "#/$defs/layer"}},
+        "camera": {
+          "type": "object",
+          "properties": {
+            "move": {"enum": ["static", "push_in", "pull_out", "orbit", "pan", "dolly", "shake", "zoom_punch"]},
+            "easing": {"type": "string"},
+            "intensity": {"type": "number"}
+          }
+        },
+        "transition_in": {
+          "type": "object",
+          "properties": {
+            "type": {"type": "string"},
+            "duration_ms": {"type": "integer"},
+            "audio_crossfade_ms": {"type": "integer"}
+          }
+        },
+        "sfx": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["asset_id", "at_ms"],
+            "properties": {
+              "asset_id": {"type": "string"},
+              "at_ms": {"type": "integer"},
+              "gain_db": {"type": "number"},
+              "sync": {"enum": ["absolute", "beat", "word"]}
+            }
+          }
+        },
+        "music_cue": {"enum": ["none", "drop", "build", "cut", "swell", "silence"]},
+        "caption_state": {"enum": ["on", "off", "emphasis", "hidden_for_text"]},
+        "beat_sync": {
+          "type": "object",
+          "properties": {
+            "snap_cuts_to": {"enum": ["none", "beat", "downbeat", "bar"]},
+            "pulse_on": {"enum": ["none", "beat", "downbeat"]}
+          }
+        },
+        "allow_gap": {"type": "boolean"},
+        "source_id": {"type": "string"},
+        "source_in_ms": {"type": "integer"},
+        "source_out_ms": {"type": "integer"},
+        "speed": {"type": "number", "default": 1.0},
+        "edit_notes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {"decision_id": {"type": "string"}, "params": {"type": "object"}}
+          }
+        },
+        "reason": {"type": "string", "description": "Why this segment is kept (footage edits)"}
+      }
+    },
+    "layer": {
+      "type": "object",
+      "required": ["id", "kind", "slot"],
+      "properties": {
+        "id": {"type": "string"},
+        "kind": {"enum": ["scene3d", "text", "counter", "image", "video", "lottie", "chart", "map", "chat_bubble", "shape", "hud", "sticker", "captions", "source_video", "face_crop", "lower_third", "logo_bug", "callout", "screen_recording", "pip"]},
+        "slot": {"type": "string", "description": "Named region from the layout preset, e.g. top_title, center_visual, bottom_caption"},
+        "z": {"type": "integer"},
+        "component": {"type": "string", "description": "Style pack component id"},
+        "props": {"type": "object"},
+        "text": {"type": "string", "description": "Text content for text layers (used by S1 and L1 measurements)"},
+        "font_px": {"type": "integer", "description": "Font size at the spec width, for L1"},
+        "animations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["primitive"],
+            "properties": {
+              "primitive": {"type": "string"},
+              "start_ms": {"type": "integer"},
+              "duration_ms": {"type": "integer"},
+              "params": {"type": "object"}
+            }
+          }
+        },
+        "asset_id": {"type": "string"}
+      }
+    },
+    "asset_ref": {
+      "type": "object",
+      "required": ["asset_id", "type", "path", "license"],
+      "properties": {
+        "asset_id": {"type": "string"},
+        "type": {"enum": ["audio", "music", "sfx", "image", "video", "font", "model3d", "lottie", "gif"]},
+        "path": {"type": "string"},
+        "sha256": {"type": "string"},
+        "license": {
+          "type": "object",
+          "properties": {
+            "source": {"type": "string"},
+            "license_id": {"type": "string"},
+            "attribution": {"type": "string"},
+            "commercial_ok": {"type": "boolean"},
+            "content_id_risk": {"enum": ["none", "low", "high", "unknown"]}
+          }
+        },
+        "ai_generated": {"type": "boolean"}
+      }
+    }
+  }
+}

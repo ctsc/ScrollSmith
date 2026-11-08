@@ -1,0 +1,13 @@
+{
+  "$comment": "1080x1920 pixel insets. Platforms rarely publish exact values and third-party measurements conflict. Versioned data, not platform guarantees. Validate hard UI text against universal_strict; allow captions inside universal_relaxed.",
+  "version": "2026-11-08",
+  "frame": {"width": 1080, "height": 1920},
+  "presets": {
+    "tiktok": {"top": 220, "bottom": 480, "left": 60, "right": 140, "source": "revid.ai safe zone checker", "verified": "SECONDARY"},
+    "reels": {"top": 270, "bottom": 670, "left": 65, "right": 120, "source": "revid.ai safe zone checker", "verified": "SECONDARY"},
+    "shorts": {"top": 288, "bottom": 672, "left": 48, "right": 192, "source": "revid.ai safe zone checker", "verified": "SECONDARY"},
+    "universal_strict": {"top": 288, "bottom": 672, "left": 65, "right": 192, "source": "intersection of tiktok, reels, shorts", "verified": "INFERRED"},
+    "universal_relaxed": {"top": 180, "bottom": 380, "left": 44, "right": 150, "source": "Vidova (middle about 870x1360)", "verified": "SECONDARY"},
+    "meta_ads": {"top_pct": 0.14, "bottom_pct": 0.35, "left_pct": 0.06, "right_pct": 0.06, "source": "Meta Ads Guide via uplads.com", "verified": "SECONDARY"}
+  }
+}

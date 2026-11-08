@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "words.v1",
+  "title": "Word timings",
+  "description": "Remotion Caption shape: text has a leading space, times in ms.",
+  "type": "object",
+  "required": ["words"],
+  "properties": {
+    "language": {"type": "string"},
+    "source": {"enum": ["whisperx_align", "whisperx_transcribe", "provider", "tts_offsets", "manual"]},
+    "words": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["text", "startMs", "endMs"],
+        "properties": {
+          "text": {"type": "string"},
+          "startMs": {"type": "integer"},
+          "endMs": {"type": "integer"},
+          "timestampMs": {"type": ["integer", "null"]},
+          "confidence": {"type": ["number", "null"]},
+          "speaker": {"type": "string"},
+          "line_id": {"type": "string"}
+        }
+      }
+    }
+  }
+}

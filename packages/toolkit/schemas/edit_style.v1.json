@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "edit_style.v1",
+  "title": "Edit style profile",
+  "description": "Output of edit_style_create from one reference video. Measured values come from scripts only; the assistant writes notes_md and picks decisions. The reference video itself is never stored.",
+  "type": "object",
+  "required": ["style_id", "name", "decisions", "measured"],
+  "properties": {
+    "style_id": {"type": "string"},
+    "name": {"type": "string"},
+    "reference": {
+      "type": "object",
+      "properties": {
+        "path_or_url": {"type": "string"},
+        "rights_attestation": {"type": "boolean"}
+      }
+    },
+    "measured": {
+      "type": "object",
+      "properties": {
+        "avg_shot_ms": {"type": "number"},
+        "cuts_per_minute": {"type": "number"},
+        "zoom_events_per_minute": {"type": "number"},
+        "caption": {
+          "type": "object",
+          "properties": {
+            "font": {"type": "string"},
+            "size_px": {"type": "number"},
+            "weight": {"type": ["number", "string"]},
+            "color": {"type": "string"},
+            "stroke_or_shadow": {"type": "string"},
+            "words_per_page": {"type": "number"},
+            "position_y_norm": {"type": "number"},
+            "animation": {"type": "string"}
+          }
+        },
+        "music": {
+          "type": "object",
+          "properties": {
+            "bpm": {"type": "number"},
+            "lufs_rel_voice_db": {"type": "number"},
+            "present_pct": {"type": "number"}
+          }
+        },
+        "sfx_per_minute": {"type": "number"},
+        "broll_pct": {"type": "number"},
+        "overlay_types": {"type": "array", "items": {"type": "string"}},
+        "hook_length_ms": {"type": "number"},
+        "color": {
+          "type": "object",
+          "properties": {"contrast": {"type": "number"}, "saturation": {"type": "number"}, "lut": {"type": "string"}}
+        }
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["decision_id"],
+        "properties": {
+          "decision_id": {"type": "string"},
+          "param_values": {"type": "object"},
+          "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+        }
+      }
+    },
+    "notes_md": {"type": "string", "description": "Human-readable style guide the assistant reads"}
+  }
+}

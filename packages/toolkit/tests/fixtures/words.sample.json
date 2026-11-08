@@ -1,0 +1,5 @@
+{"language": "en", "source": "manual", "words": [
+ {"text": " Double", "startMs": 0, "endMs": 400}, {"text": " your", "startMs": 410, "endMs": 600}, {"text": " coins", "startMs": 610, "endMs": 1000},
+ {"text": " every", "startMs": 1010, "endMs": 1300}, {"text": " day", "startMs": 1310, "endMs": 1700},
+ {"text": " Day", "startMs": 2600, "endMs": 2800}, {"text": " 5,", "startMs": 2810, "endMs": 3100}, {"text": " 32", "startMs": 3400, "endMs": 3900}, {"text": " coins", "startMs": 3910, "endMs": 4300}
+]}

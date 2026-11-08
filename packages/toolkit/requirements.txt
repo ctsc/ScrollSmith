@@ -1,0 +1,5 @@
+# Python side of the Scrollsmith toolkit. Install into a venv on the creator's machine.
+# Pinned majors; see python/README.md for the optional heavy extras (whisperx, mediapipe, pyannote).
+numpy>=1.26,<3
+librosa>=0.10,<0.11
+soundfile>=0.12,<0.14

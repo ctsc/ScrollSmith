@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "error.v1",
+  "title": "Tool error",
+  "description": "Printed by every toolkit script on failure and used by validators for each issue.",
+  "type": "object",
+  "required": ["code", "message", "retryable"],
+  "properties": {
+    "code": {"enum": ["INVALID_INPUT", "SPEC_INVALID", "ASSET_NOT_FOUND", "LICENSE_BLOCKED", "PROVIDER_ERROR", "RATE_LIMITED", "RENDER_FAILED", "TIMEOUT", "ENV_MISSING", "CONFLICT"]},
+    "message": {"type": "string"},
+    "retryable": {"type": "boolean"},
+    "path": {"type": "string", "description": "JSON pointer into the offending spec field"},
+    "fix_hint": {"type": "string", "description": "One actionable sentence the assistant can follow"},
+    "details": {"type": "object"}
+  },
+  "additionalProperties": false
+}

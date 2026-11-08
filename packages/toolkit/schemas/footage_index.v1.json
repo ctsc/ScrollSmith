@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "footage_index.v1",
+  "title": "Footage index",
+  "description": "Output of footage_ingest, written next to the footage. Never uploaded.",
+  "type": "object",
+  "required": ["source_id", "path", "duration_ms", "streams", "words", "silences", "local_only"],
+  "properties": {
+    "source_id": {"type": "string"},
+    "path": {"type": "string"},
+    "sha256": {"type": "string"},
+    "duration_ms": {"type": "integer"},
+    "streams": {
+      "type": "object",
+      "properties": {
+        "width": {"type": "integer"},
+        "height": {"type": "integer"},
+        "fps": {"type": "number"},
+        "audio_channels": {"type": "integer"},
+        "lufs": {"type": "number"}
+      }
+    },
+    "words": {"type": "array", "items": {"$ref": "#/$defs/word"}},
+    "silences": {"type": "array", "items": {"$ref": "#/$defs/span"}},
+    "fillers": {"type": "array", "items": {"$ref": "#/$defs/word"}},
+    "shots": {"type": "array", "items": {"$ref": "#/$defs/span"}},
+    "sentences": {"type": "array", "items": {"$ref": "#/$defs/span"}},
+    "faces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["track_id", "samples"],
+        "properties": {
+          "track_id": {"type": "string"},
+          "samples": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["t_ms", "bbox_norm"],
+              "properties": {
+                "t_ms": {"type": "integer"},
+                "bbox_norm": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "number"}, "description": "x, y, w, h normalized 0 to 1"},
+                "landmarks": {"type": "array"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "emphasis_candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["word_index", "score", "reason"],
+        "properties": {
+          "word_index": {"type": "integer"},
+          "score": {"type": "number"},
+          "reason": {"enum": ["pitch", "energy", "number", "keyword", "contrast"]}
+        }
+      }
+    },
+    "contact_sheet_path": {"type": "string"},
+    "transcript_pack_path": {"type": "string", "description": "Compact timestamped text for the assistant (about 10 to 20 KB), never raw video"},
+    "local_only": {"const": true}
+  },
+  "$defs": {
+    "word": {
+      "type": "object",
+      "required": ["text", "startMs", "endMs"],
+      "properties": {
+        "text": {"type": "string"},
+        "startMs": {"type": "integer"},
+        "endMs": {"type": "integer"},
+        "confidence": {"type": "number"},
+        "speaker": {"type": "string"}
+      }
+    },
+    "span": {
+      "type": "object",
+      "required": ["startMs", "endMs"],
+      "properties": {"startMs": {"type": "integer"}, "endMs": {"type": "integer"}}
+    }
+  }
+}

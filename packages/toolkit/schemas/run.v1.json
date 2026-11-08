@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "run.v1",
+  "title": "Local run state",
+  "description": "Written by long local scripts under runs/<run_id>/run.json so a run can be resumed or polled by reading the file.",
+  "type": "object",
+  "required": ["run_id", "kind", "status"],
+  "properties": {
+    "run_id": {"type": "string"},
+    "kind": {"enum": ["tts", "align", "transcribe", "footage_ingest", "render_preview", "render_final", "batch", "recipe"]},
+    "status": {"enum": ["queued", "working", "input_required", "completed", "failed", "cancelled"]},
+    "progress": {"type": "number", "minimum": 0, "maximum": 1},
+    "eta_ms": {"type": "integer"},
+    "result_path": {"type": "string"},
+    "receipt_path": {"type": "string"},
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["step", "inputs_hash", "status"],
+        "properties": {
+          "step": {"type": "string"},
+          "inputs_hash": {"type": "string"},
+          "status": {"enum": ["completed", "input_required", "failed", "skipped"]},
+          "output_path": {"type": "string"},
+          "finished_at": {"type": "string"}
+        }
+      }
+    },
+    "error": {"$ref": "error.v1"}
+  }
+}

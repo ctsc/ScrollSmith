@@ -1,0 +1,15 @@
+{
+  "$comment": "Bitrates are not platform-verified; use CRF 18 to 20 masters. Loudness targets of -14 LUFS and -1 dBTP are common conventions, not official platform numbers.",
+  "version": "2026-11-08",
+  "presets": {
+    "tiktok_1080x1920_30": {"width": 1080, "height": 1920, "fps": 30, "codec": "h264", "pix_fmt": "yuv420p", "crf": 18, "audio": {"codec": "aac", "sample_rate": 48000, "bitrate_kbps": 192}, "max_duration_s": 600, "safe_zone_preset": "tiktok"},
+    "reels_1080x1920_30": {"width": 1080, "height": 1920, "fps": 30, "codec": "h264", "pix_fmt": "yuv420p", "crf": 18, "audio": {"codec": "aac", "sample_rate": 48000, "bitrate_kbps": 192}, "max_duration_s": 180, "safe_zone_preset": "reels"},
+    "shorts_1080x1920_30": {"width": 1080, "height": 1920, "fps": 30, "codec": "h264", "pix_fmt": "yuv420p", "crf": 18, "audio": {"codec": "aac", "sample_rate": 48000, "bitrate_kbps": 192}, "max_duration_s": 180, "safe_zone_preset": "shorts"},
+    "shorts_1080x1920_60": {"width": 1080, "height": 1920, "fps": 60, "codec": "h264", "pix_fmt": "yuv420p", "crf": 18, "audio": {"codec": "aac", "sample_rate": 48000, "bitrate_kbps": 192}, "max_duration_s": 180, "safe_zone_preset": "shorts"},
+    "yt_1920x1080": {"width": 1920, "height": 1080, "fps": 30, "codec": "h264", "pix_fmt": "yuv420p", "crf": 18, "audio": {"codec": "aac", "sample_rate": 48000, "bitrate_kbps": 192}, "safe_zone_preset": "none"},
+    "square_1080x1080_30": {"width": 1080, "height": 1080, "fps": 30, "codec": "h264", "pix_fmt": "yuv420p", "crf": 18, "audio": {"codec": "aac", "sample_rate": 48000, "bitrate_kbps": 192}, "safe_zone_preset": "none"},
+    "preview_540x960_30": {"width": 540, "height": 960, "fps": 30, "codec": "h264", "pix_fmt": "yuv420p", "crf": 28, "audio": {"codec": "aac", "sample_rate": 48000, "bitrate_kbps": 96}, "preview": true}
+  },
+  "loudness": {"target_lufs": -14, "true_peak_db": -1, "lra": 11},
+  "file_naming": "{project}/{series}/{episode}_{variant}_{platform}_{w}x{h}_{fps}_{spec_hash8}.mp4"
+}

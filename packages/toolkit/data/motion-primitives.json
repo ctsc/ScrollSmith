@@ -1,0 +1,18 @@
+{
+  "$comment": "All primitives are frame-pure functions: primitive(frame, fps, start, duration, params, seed). Never use Date.now() or Math.random(); use the seed.",
+  "version": "2026-11-08",
+  "groups": [
+    {"group": "text", "primitives": ["word_slam", "char_stagger", "mask_reveal", "typewriter", "highlight_sweep", "word_swap", "scramble_decode"], "key_params": ["stagger_ms", "easing", "mask_dir"], "implementation": "Remotion interpolate and spring; text measuring for layout"},
+    {"group": "numbers", "primitives": ["number_roll", "odometer", "percent_fill", "currency_tick"], "key_params": ["from", "to", "format", "curve"], "implementation": "interpolate with an exponential curve for doubling stories"},
+    {"group": "transitions", "primitives": ["cut", "crossfade", "slide", "wipe", "zoom_through", "whip_pan", "match_cut", "glitch_cut"], "key_params": ["duration_ms", "direction"], "implementation": "@remotion/transitions or custom"},
+    {"group": "camera", "primitives": ["push_in", "pull_out", "orbit", "dolly", "pan", "shake", "zoom_punch"], "key_params": ["intensity", "easing"], "implementation": "R3F camera props driven by frame; 2D via CSS transform"},
+    {"group": "depth", "primitives": ["parallax_layers", "ken_burns", "float_bob"], "key_params": ["depth", "speed"], "implementation": "transforms"},
+    {"group": "particles", "primitives": ["confetti_burst", "sparks", "dust", "snow", "coin_rain"], "key_params": ["count", "seed"], "implementation": "Seeded RNG; instanced meshes in R3F"},
+    {"group": "shapes", "primitives": ["shape_morph", "svg_draw_on", "bar_grow", "route_draw"], "key_params": ["path", "duration"], "implementation": "path interpolation; stroke-dashoffset"},
+    {"group": "fx", "primitives": ["glitch_rgb", "screen_shake", "flash", "chromatic", "film_grain", "light_leak", "crt_filter"], "key_params": ["intensity"], "implementation": "Shaders or CSS filters"},
+    {"group": "timing", "primitives": ["speed_ramp", "freeze_frame", "rewind", "step_ease"], "key_params": ["curve"], "implementation": "Frame remapping"},
+    {"group": "beat", "primitives": ["beat_pulse", "beat_cut_snap", "downbeat_flash", "bar_scene_change"], "key_params": ["beats_path", "strength"], "implementation": "Read beats.json; nearest-beat lookup"},
+    {"group": "loop", "primitives": ["loop_seal", "loop_crossfade", "loop_rewind", "match_cut_loop"], "key_params": ["seam_ms"], "implementation": "See the loop_seal skill"},
+    {"group": "easing", "primitives": ["linear", "ease_out_expo", "ease_in_out_cubic", "spring_soft", "spring_snappy", "spring_bouncy", "step_n"], "key_params": [], "implementation": "Token-defined"}
+  ]
+}

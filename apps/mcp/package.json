@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/dev.ts",
-    "lint": "tsc --noEmit",
-    "typecheck": "tsc --noEmit"
+    "lint": "tsc --noEmit && node scripts/build-content.mjs --check",
+    "typecheck": "tsc --noEmit",
+    "content:build": "node scripts/build-content.mjs",
+    "content:check": "node scripts/build-content.mjs --check"
   },
   "dependencies": {
     "@modelcontextprotocol/server": "^2.4.0",
@@ -17,6 +19,7 @@
     "@types/node": "^20.19.43",
     "@vercel/node": "^29.0.0",
     "tsx": "^4.23.15",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "yaml": "^2.9.1"
   }
 }

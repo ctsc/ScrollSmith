@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "script.v1",
+  "title": "Narration script",
+  "type": "object",
+  "required": ["lines", "est_duration_ms"],
+  "properties": {
+    "title": {"type": "string"},
+    "format_id": {"type": "string"},
+    "language": {"type": "string", "default": "en"},
+    "target_s": {"type": "number"},
+    "lines": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "text", "beat"],
+        "properties": {
+          "id": {"type": "string"},
+          "text": {"type": "string", "description": "Spoken text. Numbers may be digits; TTS expands them."},
+          "display_text": {"type": "string", "description": "Optional on-screen form when it differs from the spoken form"},
+          "beat": {"enum": ["hook", "context", "escalation", "payoff", "twist", "proof", "cta", "loop_bridge", "problem", "demo", "testimonial", "offer"]},
+          "emphasis_words": {"type": "array", "items": {"type": "string"}},
+          "open_loop": {"type": "string"},
+          "closes_loop_id": {"type": "string"},
+          "est_ms": {"type": "integer"},
+          "visual_hint": {"type": "string"}
+        }
+      }
+    },
+    "est_duration_ms": {"type": "integer"},
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["line_id", "claim"],
+        "properties": {
+          "line_id": {"type": "string"},
+          "claim": {"type": "string"},
+          "status": {"enum": ["verified", "unverified", "false"]},
+          "source_url": {"type": "string"}
+        }
+      }
+    }
+  }
+}

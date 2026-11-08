@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "render_receipt.v1",
+  "title": "Render receipt",
+  "type": "object",
+  "required": ["spec_hash", "engine", "engine_version", "pack_version", "seed", "frames", "render_ms", "output_path", "sha256", "local_only"],
+  "properties": {
+    "spec_hash": {"type": "string"},
+    "engine": {"enum": ["remotion", "hyperframes", "ffmpeg"]},
+    "engine_version": {"type": "string"},
+    "pack_version": {"type": "string"},
+    "seed": {"type": "integer"},
+    "frames": {"type": "integer"},
+    "render_ms": {"type": "integer"},
+    "output_path": {"type": "string"},
+    "sha256": {"type": "string"},
+    "sources": {"type": "array", "items": {"type": "object", "required": ["source_id", "sha256"], "properties": {"source_id": {"type": "string"}, "sha256": {"type": "string"}}}},
+    "warnings": {"type": "array", "items": {"type": "string"}},
+    "voice_consent": {"type": "boolean"},
+    "ai_disclosure": {"enum": ["none", "ai_assisted", "realistic_ai"]},
+    "local_only": {"const": true}
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$comment": "Caption presets. Sizes are px at 1080 width. mino_clean_3word is seeded from a public skill description (one verified style, not a vendor's full product style); TikTok Sans licensing must be verified before bundling, so the preset names a metric-compatible fallback.",
+  "version": "2026-11-08",
+  "presets": {
+    "karaoke_highlight": {"font_family": "Inter", "weight": 800, "size_px": 64, "color": "#FFFFFF", "highlight_color": "#FFD23F", "stroke_px": 6, "words_per_page": 4, "animation": "highlight_sweep", "position_y_norm": 0.58, "fallback_font": "Inter"},
+    "pop_in_3word": {"font_family": "Inter", "weight": 900, "size_px": 72, "color": "#FFFFFF", "stroke_px": 8, "words_per_page": 3, "animation": "pop_in", "position_y_norm": 0.58, "fallback_font": "Inter"},
+    "single_word_slam": {"font_family": "Inter", "weight": 900, "size_px": 96, "color": "#FFFFFF", "stroke_px": 10, "words_per_page": 1, "animation": "word_slam", "position_y_norm": 0.5, "fallback_font": "Inter"},
+    "emoji_accent": {"font_family": "Inter", "weight": 800, "size_px": 64, "color": "#FFFFFF", "stroke_px": 6, "words_per_page": 3, "animation": "pop_in", "emoji": true, "emoji_font": "Noto Color Emoji (OFL)", "position_y_norm": 0.58, "fallback_font": "Inter"},
+    "keyword_color": {"font_family": "Inter", "weight": 800, "size_px": 64, "color": "#FFFFFF", "emphasis_color": "#3BCEAC", "stroke_px": 6, "words_per_page": 3, "animation": "none", "position_y_norm": 0.58, "fallback_font": "Inter"},
+    "boxed_subtitle": {"font_family": "Inter", "weight": 700, "size_px": 56, "color": "#FFFFFF", "box_color": "#000000CC", "words_per_page": 5, "animation": "none", "position_y_norm": 0.6, "fallback_font": "Inter"},
+    "mino_clean_3word": {"font_family": "TikTok Sans", "weight": 550, "size_px": 52, "color": "#FFFFFF", "shadow": "soft", "words_per_page": 3, "animation": "none", "position_y_norm": 0.58, "notes": "Talking-head vertical video; kept clear of TikTok and Reels buttons. Verify TikTok Sans license before bundling.", "fallback_font": "Inter", "fallback_weight": 600},
+    "cube_pop_3word": {"font_family": "Inter", "weight": 900, "size_px": 64, "color": "#FFD23F", "stroke_px": 8, "stroke_color": "#0E1116", "words_per_page": 3, "animation": "pop_in", "position_y_norm": 0.58, "fallback_font": "Inter"},
+    "cube_karaoke": {"font_family": "Inter", "weight": 900, "size_px": 64, "color": "#FFFFFF", "highlight_color": "#FFD23F", "stroke_px": 8, "stroke_color": "#0E1116", "words_per_page": 4, "animation": "highlight_sweep", "position_y_norm": 0.58, "fallback_font": "Inter"}
+  },
+  "fonts": {
+    "Inter": {"license": "OFL-1.1", "source_url": "https://fonts.google.com/specimen/Inter", "last_verified": null},
+    "Noto Color Emoji": {"license": "OFL-1.1", "source_url": "https://fonts.google.com/noto/specimen/Noto+Color+Emoji", "last_verified": null},
+    "TikTok Sans": {"license": "unverified", "source_url": null, "last_verified": null}
+  }
+}

@@ -1,0 +1,13 @@
+# Local toolkit python extras. Install in a venv: pip install -r requirements.txt
+# Core (small):
+numpy>=1.24
+# Transcription and word timings (pick one; faster-whisper is lighter):
+faster-whisper>=1.0
+# whisperx>=3.1   # better word alignment, heavier (torch)
+# Beats:
+librosa>=0.10
+soundfile>=0.12
+# Optional footage analysis:
+# mediapipe>=0.10   # face boxes
+# pytesseract>=0.3  # OCR, needs the tesseract binary
+# yt-dlp>=2024.1    # public link download adapter (see link_resolve caveats)

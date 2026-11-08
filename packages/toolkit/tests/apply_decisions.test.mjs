@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { applyDecisions, resolveParams } from "../node/apply_decisions.mjs";
@@ -24,8 +24,23 @@ function editSpec() {
   };
 }
 
-test("every registry file validates against edit_decision.v1", () => {
-  for (const cat of ["cut_pacing", "zoom_framing"]) for (const d of registry(cat)) assert.equal(validateAgainst("edit_decision.v1", d).length, 0, d.id);
+test("every registry file validates against edit_decision.v1 and ids are unique and consistent", () => {
+  const files = readdirSync(join(here, "..", "registry")).filter((f) => f.endsWith(".json"));
+  assert.ok(files.length >= 13);
+  const seen = new Set();
+  let total = 0;
+  for (const f of files) {
+    const cat = f.replace(/\.json$/, "");
+    for (const d of registry(cat)) {
+      assert.equal(validateAgainst("edit_decision.v1", d).length, 0, `${d.id}: ${JSON.stringify(validateAgainst("edit_decision.v1", d)[0])}`);
+      assert.equal(d.category, cat, d.id);
+      assert.ok(d.id.startsWith(`${cat}.`), d.id);
+      assert.ok(!seen.has(d.id), `duplicate ${d.id}`);
+      seen.add(d.id);
+      total++;
+    }
+  }
+  assert.ok(total >= 80, `registry has ${total} decisions`);
 });
 
 test("snapToWordBoundary never lands inside a word", () => {

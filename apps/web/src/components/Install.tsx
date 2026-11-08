@@ -17,7 +17,7 @@ export function Install() {
       </h1>
       <p className="mt-4 max-w-2xl text-muted">
         Scrollsmith is a free MCP server. Paste its URL into the AI you already use and it shows up as a connected
-        server. Skills for video, image and voice are landing soon. Nothing to download, no account.
+        server. 139 skills for faceless video, talking-head edits, strategy, hooks and review, served to your own assistant, which runs everything locally. Nothing to download, no account.
       </p>
       <div className="mt-10">
         <Suspense fallback={<InstallTabs />}>

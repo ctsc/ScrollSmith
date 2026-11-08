@@ -187,3 +187,12 @@ Defaults in parentheses; we proceed with the default unless changed.
   retention, per-tool usage. Plain `/mcp` still works for people who connected before.
 - Waitlist removed from the site (homepage = install page). The Supabase `waitlist`
   table and its rows are kept; nothing writes to it anymore.
+
+
+## Skills phase (built from shortform_mcp_unified_spec.md)
+
+- Architecture locked: skills-only hosted MCP. The server serves content; the user's Claude, Claude Code, Cursor or Gemini CLI does the reasoning and runs ffmpeg, Whisper, Remotion and provider SDKs locally with the user's own keys.
+- Layout: `skills/<id>/SKILL.md` (139 packages, sections A to N), `rulebooks/` (6 formats), `recipes/` (11 prompts), `packages/toolkit/` (15 JSON schemas, data, 94-decision registry, node and python scripts with tests), `packages/packs/cubestory` (first style pack), `apps/mcp/content/bundle.json` (generated).
+- Toolkit contract: scripts read JSON from a file or stdin, print JSON, print `error.v1` on failure, exit 0 ok, 1 invalid input, 2 missing environment, 3 runtime. Footage, audio and renders never leave the machine.
+- Asset sources ship unverified (`verified: false`) until each license is checked by hand; unknown license blocks `render_final`.
+- Not built on purpose: cloud rendering, model calls from the server, OAuth, publishing integrations, bundled asset kits, `eye_contact_fix` (documented as unimplemented).

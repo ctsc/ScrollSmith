@@ -6,7 +6,7 @@ Monorepo for [scroll-smith.com](https://www.scroll-smith.com).
 | --- | --- | --- |
 | `apps/web` | Next.js install site (personal MCP URL per visitor), Terms, Privacy | Vercel project `scroll-smith` (Root Directory: `apps/web`) |
 | `apps/mcp` | Scrollsmith MCP server (Streamable HTTP, stateless) | Vercel project `scrollsmith-mcp` (Root Directory: `apps/mcp`) → `mcp.scroll-smith.com` |
-| `docs` | product decisions and plans | — |
+| `docs` | product decisions and plans | - |
 
 ```bash
 pnpm install

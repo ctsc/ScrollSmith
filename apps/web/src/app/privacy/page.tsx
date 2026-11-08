@@ -33,8 +33,8 @@ export default function PrivacyPage() {
       <Section title="3. Who we share it with">
         <p>Only service providers that store or process data on our behalf:</p>
         <ul className="list-disc space-y-1 pl-5">
-          <li><strong className="text-fg">Supabase</strong> — database that holds the install-key and event tables.</li>
-          <li><strong className="text-fg">Vercel</strong> — hosts the website and MCP server.</li>
+          <li><strong className="text-fg">Supabase</strong> - database that holds the install-key and event tables.</li>
+          <li><strong className="text-fg">Vercel</strong> - hosts the website and MCP server.</li>
         </ul>
         <p>We do not sell personal data and we do not share it with advertisers. We may disclose data if required by law.</p>
       </Section>

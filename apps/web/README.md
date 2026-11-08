@@ -1,4 +1,4 @@
-# Scrollsmith AI — waitlist landing page
+# Scrollsmith AI - website (MCP install page)
 
 Phase-0 landing page for the AI short-form video platform (see
 [`docs/PRODUCT_DECISIONS.md`](docs/PRODUCT_DECISIONS.md) for the product plan).
@@ -34,7 +34,7 @@ View signups in **Table Editor -> waitlist**, or export with
 2. Add environment variables (Production + Preview):
    - `SUPABASE_URL`
    - `SUPABASE_SERVICE_ROLE_KEY`
-   - `NEXT_PUBLIC_SITE_URL` = your final URL (e.g. `https://scrollsmith.ai`) — used for OG/canonical tags.
+   - `NEXT_PUBLIC_SITE_URL` = your final URL (e.g. `https://scrollsmith.ai`) - used for OG/canonical tags.
 3. Deploy. Attach your domain under **Settings -> Domains**.
 
 ### 3. Instagram bio link
